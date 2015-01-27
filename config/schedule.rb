@@ -20,13 +20,13 @@
 # Learn more: http://github.com/javan/whenever
 
 
-every :day, :at => '12:36am' do
+every :day, :at => '12:50am' do
   command "echo \"I am running from cron for revel import!"
   runner "revelproductfetch.rb"
   set :output, '/var/www/apps/12851/current/log/custom_deploy_after_migrate.log'
 end
 
-every :day, :at => '07:36am' do
+every :day, :at => '07:50am' do
   command "echo \"I am running from cron for revel import!"
   runner "revelproductfetch.rb"
   set :output, '/var/www/apps/12851/current/log/custom_deploy_after_migrate.log'
