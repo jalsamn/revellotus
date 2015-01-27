@@ -1,7 +1,7 @@
 class TemplabelsController < ApplicationController
   before_action :set_templabel, only: [:show, :edit, :update, :destroy]
 
- 
+  @myvar = "class-level"
   
   # GET /templabels
   # GET /templabels.json
@@ -80,18 +80,29 @@ class TemplabelsController < ApplicationController
       header = "barcode,name,price,point"
       file = "barcodelabels.csv"
              CSV.open(file, "w") do |csv|
-               csv << ["Barcode", "Name", "Price", "Points"]
+             csv << ["Barcode", "Name", "Price", "Points"]
+               
+               
+               
               @templabels.each do |c|
-                product = Product.find_by barcode: c["barcode"]
-                csv << [product.barcode, product.name, product.price.to_s, product.rewardpoint.to_s]                  
+                  if !Product.exists?(:barcode => c["barcode"])  
+                     
+                    
+                  else
+                    product = Product.find_by barcode: c["barcode"]
+                    csv << [product.barcode, product.name, product.price.to_s, product.rewardpoint.to_s] 
+                    
+                  end
+                
              end
            end
+     
      ftp.putbinaryfile(file, remotefile = File.basename(file))
      Templabel.delete_all()
      ftp.close
-     redirect_to labelmessage_path, alert: "You're stuck here!"
+     redirect_to labelmessage_path, :notice => ""
   end
-  
+    
   def labelmessage
   end
   
