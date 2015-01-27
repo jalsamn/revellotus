@@ -12,6 +12,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'ninefold'
 # For scheduling cron jobs
 gem 'whenever', :require => false
 
