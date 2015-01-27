@@ -1,0 +1,26 @@
+<h1>Price Labels</h1>
+
+<%= render 'form' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Barcode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @templabels.each do |templabel| %>
+      <tr>
+        <td><%= templabel.barcode %></td>
+        <td><%= link_to 'Show', templabel %></td>
+        <td><%= link_to 'Destroy', templabel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Final Submit', csv_path %>
+
+<br>
+
