@@ -11,7 +11,7 @@ hash = parser.parse(json)
 
 
   hash["objects"].each do |prod|
-
+  begin
     if !Product.exists?(:sku => prod["sku"])
       product = Product.new
       product.name = prod["name"]
@@ -39,5 +39,8 @@ hash = parser.parse(json)
       puts "Updated product "
       puts prod["name"] 
     end  
+   rescue
+        puts "an error happened but I'm not done yet."
+  end
   end
 
