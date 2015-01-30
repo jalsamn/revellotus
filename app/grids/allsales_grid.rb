@@ -3,7 +3,7 @@ class AllsalesGrid
   include Datagrid
 
   scope do
-    Orderitem.group(:productid)
+    Orderitem.select("productid, created_date, sum(actualqty) as tsold, product_name_override").group("productid")
   end
 
   filter(:productid, :integer)
@@ -12,10 +12,10 @@ class AllsalesGrid
  
   column(:productid)
   column(:product_name_override)
-  column(:totalsold, 'sum(actualqty)')
+  column(:tsold)
   
-  column(:finalsold, :header => "Sortable Sum", :order => "totalsold") do
-    self.totalsold.round(2)
+  column(:finalsold, :header => "Sortable Sum", :order => "tsold") do
+    self.tsold.round(2)
   end
   column(:created_date)
 end
