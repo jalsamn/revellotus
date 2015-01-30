@@ -1,5 +1,2 @@
-$objArray = []
-$objArray.push "Error encountered @ " + '\n'
-$objArray.push "Error encountered @ " + '\n'
-
-ErrorMailer.sample_email($objArray).deliver
+str = "2014-10-14T17:16:14"
+puts str.scan(/^.{0,10}/)

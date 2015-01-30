@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129021244) do
+ActiveRecord::Schema.define(version: 20150130032558) do
 
   create_table "orderitems", force: true do |t|
     t.decimal  "cost"
     t.string   "created_by"
-    t.datetime "created_date"
+    t.date     "created_date"
     t.integer  "rev_id",                limit: 8
     t.integer  "order_local_id",        limit: 8
     t.integer  "productid",             limit: 8
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150129021244) do
     t.decimal  "pure_sales"
     t.integer  "revquantity"
     t.decimal  "actualqty"
-    t.datetime "updated_date"
+    t.date     "updated_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
