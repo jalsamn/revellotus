@@ -1,0 +1,69 @@
+<%= form_for(@orderitem) do |f| %>
+  <% if @orderitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@orderitem.errors.count, "error") %> prohibited this orderitem from being saved:</h2>
+
+      <ul>
+      <% @orderitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :created_date %><br>
+    <%= f.datetime_select :created_date %>
+  </div>
+  <div class="field">
+    <%= f.label :rev_id %><br>
+    <%= f.text_field :rev_id %>
+  </div>
+  <div class="field">
+    <%= f.label :order_local_id %><br>
+    <%= f.text_field :order_local_id %>
+  </div>
+  <div class="field">
+    <%= f.label :productid %><br>
+    <%= f.text_field :productid %>
+  </div>
+  <div class="field">
+    <%= f.label :product_name_override %><br>
+    <%= f.text_field :product_name_override %>
+  </div>
+  <div class="field">
+    <%= f.label :initial_price %><br>
+    <%= f.text_field :initial_price %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :pure_sales %><br>
+    <%= f.text_field :pure_sales %>
+  </div>
+  <div class="field">
+    <%= f.label :revquantity %><br>
+    <%= f.text_field :revquantity %>
+  </div>
+  <div class="field">
+    <%= f.label :actualqty %><br>
+    <%= f.text_field :actualqty %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_date %><br>
+    <%= f.datetime_select :updated_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

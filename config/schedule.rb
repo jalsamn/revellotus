@@ -19,6 +19,11 @@
 
 # Learn more: http://github.com/javan/whenever
 
+every 5.hours do
+  
+  runner "scripts/orderitemfetch.rb"
+  set :output, '/var/www/apps/12851/current/log/custom_deploy_after_migrate.log'
+end
 
 every :day, :at => '12:50am' do
   command "echo \"I am running from cron for revel import!"

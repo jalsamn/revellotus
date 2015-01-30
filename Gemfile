@@ -15,6 +15,12 @@ end
 gem 'ninefold'
 # For scheduling cron jobs
 gem 'whenever', :require => false
+#For DataGrid
+gem 'datagrid'
+#For pagination
+gem 'will_paginate', '~> 3.0.6'
+#For managing evironment vars
+gem 'figaro'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

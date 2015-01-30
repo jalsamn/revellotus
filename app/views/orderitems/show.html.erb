@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @orderitem.cost %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @orderitem.created_by %>
+</p>
+
+<p>
+  <strong>Created date:</strong>
+  <%= @orderitem.created_date %>
+</p>
+
+<p>
+  <strong>Rev:</strong>
+  <%= @orderitem.rev_id %>
+</p>
+
+<p>
+  <strong>Order local:</strong>
+  <%= @orderitem.order_local_id %>
+</p>
+
+<p>
+  <strong>Productid:</strong>
+  <%= @orderitem.productid %>
+</p>
+
+<p>
+  <strong>Product name override:</strong>
+  <%= @orderitem.product_name_override %>
+</p>
+
+<p>
+  <strong>Initial price:</strong>
+  <%= @orderitem.initial_price %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @orderitem.price %>
+</p>
+
+<p>
+  <strong>Pure sales:</strong>
+  <%= @orderitem.pure_sales %>
+</p>
+
+<p>
+  <strong>Revquantity:</strong>
+  <%= @orderitem.revquantity %>
+</p>
+
+<p>
+  <strong>Actualqty:</strong>
+  <%= @orderitem.actualqty %>
+</p>
+
+<p>
+  <strong>Updated date:</strong>
+  <%= @orderitem.updated_date %>
+</p>
+
+<%= link_to 'Edit', edit_orderitem_path(@orderitem) %> |
+<%= link_to 'Back', orderitems_path %>

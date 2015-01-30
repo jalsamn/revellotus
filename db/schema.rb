@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128011025) do
+ActiveRecord::Schema.define(version: 20150129021244) do
+
+  create_table "orderitems", force: true do |t|
+    t.decimal  "cost"
+    t.string   "created_by"
+    t.datetime "created_date"
+    t.integer  "rev_id",                limit: 8
+    t.integer  "order_local_id",        limit: 8
+    t.integer  "productid",             limit: 8
+    t.string   "product_name_override"
+    t.decimal  "initial_price"
+    t.decimal  "price"
+    t.decimal  "pure_sales"
+    t.integer  "revquantity"
+    t.decimal  "actualqty"
+    t.datetime "updated_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true
 
   create_table "products", force: true do |t|
     t.string   "name"

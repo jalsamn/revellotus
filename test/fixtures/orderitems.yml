@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cost: 9.99
+  created_by: MyString
+  created_date: 2015-01-28 23:25:01
+  rev_id: 
+  order_local_id: 
+  productid: 
+  product_name_override: MyString
+  initial_price: 9.99
+  price: 9.99
+  pure_sales: 9.99
+  revquantity: 
+  actualqty: 9.99
+  updated_date: 2015-01-28 23:25:01
+
+two:
+  cost: 9.99
+  created_by: MyString
+  created_date: 2015-01-28 23:25:01
+  rev_id: 
+  order_local_id: 
+  productid: 
+  product_name_override: MyString
+  initial_price: 9.99
+  price: 9.99
+  pure_sales: 9.99
+  revquantity: 
+  actualqty: 9.99
+  updated_date: 2015-01-28 23:25:01

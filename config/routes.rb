@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :allsales
+  resources :orderitems
+
   resources :templabels 
   get 'csv', to: 'templabels#spitcsv'
   get 'labelmessage', to: 'templabels#labelmessage'
+  get 'totalsales', to: 'orderitems#totalsales'
     
 
   resources :products
