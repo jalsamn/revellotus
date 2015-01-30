@@ -45,10 +45,11 @@ hash = parser.parse(json)
         orderitem.save
         puts "added item "
         puts oi["product_name_override"]
-    end
+    
    
     rescue 
         $objArray.push "Error encountered @ " + oi["product_name_override"]
         puts "Error encountered @ " + oi["product_name_override"]
     end
   
+  end
