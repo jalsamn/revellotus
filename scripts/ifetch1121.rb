@@ -14,7 +14,7 @@ hash = parser.parse(json)
 
 
   hash["objects"].each do |oi|
-    
+    begin
     
         orderitem = Orderitem.new
         orderitem.cost = oi["cost"]
@@ -47,5 +47,8 @@ hash = parser.parse(json)
         puts oi["product_name_override"]
     end
    
-    
+    rescue 
+        $objArray.push "Error encountered @ " + oi["product_name_override"]
+        puts "Error encountered @ " + oi["product_name_override"]
+    end
   
