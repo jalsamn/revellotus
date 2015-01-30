@@ -3,7 +3,7 @@ class AllsalesGrid
   include Datagrid
 
   scope do
-    Orderitem.select("productid, actualqty, product_name_override").group("productid", "actualqty", "product_name_override")
+    Orderitem.group("productid", "actualqty", "product_name_override")
   end
 
   filter(:productid, :integer)
