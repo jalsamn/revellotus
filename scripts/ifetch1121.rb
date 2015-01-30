@@ -43,8 +43,7 @@ hash = parser.parse(json)
         newupddate1 = newupddate.join()
         orderitem.updated_date = newupddate1
         orderitem.save
-        puts "added item "
-        puts oi["product_name_override"]
+   
     
    
     rescue 
