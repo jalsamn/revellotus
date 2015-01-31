@@ -11,7 +11,8 @@ end
 group :production do
   gem 'pg'
 end
-
+gem "wice_grid", '3.4.2'
+gem "jquery-ui-rails"
 gem 'ninefold'
 # For scheduling cron jobs
 gem 'whenever', :require => false

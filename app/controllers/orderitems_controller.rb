@@ -1,15 +1,27 @@
 class OrderitemsController < ApplicationController
   before_action :set_orderitem, only: [:show, :edit, :update, :destroy]
-
   # GET /orderitems
   # GET /orderitems.json
   def index
-    @orderitems = Orderitem.paginate(:page => params[:page], :per_page => 30)   
+    @itemsperday = Groupedtotal
+    .select("name, SUM(totalsold) as totalsold")
+    .where(created_date: params[:start_date]..params[:end_date])
+    .group("name")
+    .sort_by(&:totalsold).reverse
   end
   
   def totalsales
-    #@orderitems = Orderitem.group(:productid)
-    @orderitems = Orderitem.select("product_name_override as product, sum(actualqty) as total_sold").group(:productid)
+    if params[:start_date] && params[:end_date]
+    end_params = params[:end_date]
+      start_params = params[:start_date]
+      start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
+      end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
+    
+      redirect_to :action => 'index', :start_date => start_date, :end_date => end_date
+    end
+  end
+  
+  def daterangepicker
   end
 
   # GET /orderitems/1
@@ -74,6 +86,7 @@ class OrderitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orderitem_params
-      params.require(:orderitem).permit(:cost, :created_by, :created_date, :rev_id, :order_local_id, :productid, :product_name_override, :initial_price, :price, :pure_sales, :revquantity, :actualqty, :updated_date)
+      params.require(:orderitem).permit(:cost, :created_by, :created_date, :rev_id, :order_local_id, :productid, :product_name_override, :initial_price, :price,             :pure_sales, :revquantity, :actualqty, :updated_date)
     end
+  
 end

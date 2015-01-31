@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :templabels 
   get 'csv', to: 'templabels#spitcsv'
   get 'labelmessage', to: 'templabels#labelmessage'
-  get 'totalsales', to: 'orderitems#totalsales'
+  #get 'totalsales', to: 'orderitems#totalsales'
+  match 'totalsales', to: 'orderitems#totalsales', via: [:get, :post]
     
 
   resources :products

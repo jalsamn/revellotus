@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require datagrid
+*= require bootstrap.min
  *= require_self
  */

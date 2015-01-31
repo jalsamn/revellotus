@@ -1,49 +1,28 @@
-<h1>Listing Every Line Order Items</h1>
+<div class="page-header">
+  <h1>Product sold by date <%= params[:start_date].to_date %> to  <%= params[:end_date].to_date %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Cost</th>
-      <th>Created by</th>
-      <th>Created date</th>
-      <th>Rev</th>
-      <th>Order local</th>
-      <th>Productid</th>
-      <th>Product name override</th>
-      <th>Initial price</th>
-      <th>Price</th>
-      <th>Pure sales</th>
-      <th>Revquantity</th>
-      <th>Actualqty</th>
-      <th>Updated date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @orderitems.each do |orderitem| %>
+</div>
+
+<table class="table table-striped table-bordered table-condensed">
+<thead>
+<tr>
+  <th colspan="1"></th>
+  <th colspan="1">Item</th>
+  <th colspan="1">Sold</th>
+
+</tr>
+</thead>
+<tbody>
+    <% @itemsperday.each do |person| %>
       <tr>
-        <td><%= orderitem.cost %></td>
-        <td><%= orderitem.created_by %></td>
-        <td><%= orderitem.created_date %></td>
-        <td><%= orderitem.rev_id %></td>
-        <td><%= orderitem.order_local_id %></td>
-        <td><%= orderitem.productid %></td>
-        <td><%= orderitem.product_name_override %></td>
-        <td><%= orderitem.initial_price %></td>
-        <td><%= orderitem.price %></td>
-        <td><%= orderitem.pure_sales %></td>
-        <td><%= orderitem.revquantity %></td>
-        <td><%= orderitem.actualqty %></td>
-        <td><%= orderitem.updated_date %></td>
-        <td><%= link_to 'Show', orderitem %></td>
-        <td><%= link_to 'Edit', edit_orderitem_path(orderitem) %></td>
-        <td><%= link_to 'Destroy', orderitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
+        <td><%= person.name %></td>
+        <td><%= person.totalsold %></td>
+   
       </tr>
     <% end %>
+
   </tbody>
 </table>
-
-<br>
-<%= will_paginate @posts %>
-<%= link_to 'New Orderitem', new_orderitem_path %>
+</div>

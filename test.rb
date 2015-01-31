@@ -1,2 +1,10 @@
-str = "2014-10-14T17:16:14"
-puts str.scan(/^.{0,10}/)
+puts "Grabbed the JSON from Revel!"
+json = File.new('RevProducts.json', 'r')
+parser = Yajl::Parser.new
+hash = parser.parse(json)
+
+
+ hash["objects"].last do |prod|
+  puts  prod["name"]
+  puts  prod["id"]
+ end
