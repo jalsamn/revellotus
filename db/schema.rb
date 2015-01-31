@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130220015) do
+ActiveRecord::Schema.define(version: 201501302200152) do
 
   create_table "orderitems", force: true do |t|
     t.decimal  "cost"
