@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 201501302200152) do
+ActiveRecord::Schema.define(version: 20150131235832) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "orderitems", force: true do |t|
     t.decimal  "cost"
@@ -31,12 +34,12 @@ ActiveRecord::Schema.define(version: 201501302200152) do
     t.datetime "updated_at"
   end
 
-  add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true
+  add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true, using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.integer  "sku"
-    t.integer  "barcode"
+    t.integer  "sku",         limit: 8
+    t.integer  "barcode",     limit: 8
     t.string   "category"
     t.string   "subcategory"
     t.integer  "rewardpoint"
@@ -45,11 +48,11 @@ ActiveRecord::Schema.define(version: 201501302200152) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price"
-    t.integer  "revid"
+    t.integer  "revid",       limit: 8
   end
 
   create_table "templabels", force: true do |t|
-    t.integer  "barcode"
+    t.integer  "barcode",    limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end

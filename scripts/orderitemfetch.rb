@@ -41,9 +41,9 @@ hash = parser.parse(json)
         
     rescue 
         $objArray.push "Error encountered @ " + oi["product_name_override"]
-        #puts "Error encountered @ " + oi["product_name_override"]
+        puts "Error encountered @ " + oi["product_name_override"]
     end
     
   end
-ErrorMailer.sample_email($objArray).deliver
+#ErrorMailer.sample_email($objArray).deliver
 
