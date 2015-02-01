@@ -1,10 +1,6 @@
 class Createviewgroupedtls < ActiveRecord::Migration
   def change
-    execute %Q{
-        
-              DROP VIEW groupedtotals 
-
-    }
+   
     execute %Q{
         
        CREATE VIEW groupedtotals AS
