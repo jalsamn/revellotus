@@ -3,11 +3,15 @@ class OrderitemsController < ApplicationController
   # GET /orderitems
   # GET /orderitems.json
   def index
+    
     @itemsperday = Groupedtotal
     .select("name, SUM(totalsold) as totalsold")
     .where(created_date: params[:start_date]..params[:end_date])
     .group("name")
     .sort_by(&:totalsold).reverse
+    
+    @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
+    
   end
   
   def totalsales

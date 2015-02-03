@@ -1,4 +1,5 @@
 class TemplabelsController < ApplicationController
+  layout 'templabel'
   before_action :set_templabel, only: [:show, :edit, :update, :destroy]
 
   @myvar = "class-level"

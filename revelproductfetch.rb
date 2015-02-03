@@ -13,25 +13,26 @@ hash = parser.parse(json)
 
   hash["objects"].each do |prod|
   begin
-    if !Product.exists?(:sku => prod["sku"])
-      product = Product.new
-      product.name = prod["name"]
-      product.sku = prod["sku"]
-      product.barcode = prod["barcode"]
-      product.category = prod["category"]
-      product.rewardpoint = prod["point_value"]
-      product.cost = prod["cost"]
-      product.active = prod["active"]
-      product.price = prod["price"]
-      product.revid = prod["id"]
-      product.save
-      puts "Added product with id "
-      puts prod["id"]
+    if !Product.exists?(:barcode => prod["barcode"])
+      next if prod["establishment"] == "/enterprise/Establishment/2/"
+        product = Product.new
+        product.name = prod["name"]
+        product.sku = prod["sku"]
+        product.barcode = prod["barcode"]
+        product.category = prod["category"]
+        product.rewardpoint = prod["point_value"]
+        product.cost = prod["cost"]
+        product.active = prod["active"]
+        product.price = prod["price"]
+        product.revid = prod["id"]
+        product.save
+        puts "Added product with id "
+        puts prod["id"]
     else
      
         next if prod["establishment"] == "/enterprise/Establishment/2/"
       
-          product = Product.find_by sku: prod["sku"]
+          product = Product.find_by barcode: prod["barcode"]
           product.name = prod["name"]
           product.sku = prod["sku"]
           product.barcode = prod["barcode"]

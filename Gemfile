@@ -4,13 +4,10 @@ gem 'curb'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
-group :development do
-  gem 'pg'
-end
 
-group :production do
-  gem 'pg'
-end
+
+gem 'pg'
+
 gem "wice_grid", '3.4.2'
 gem "jquery-ui-rails"
 gem 'ninefold'
@@ -19,7 +16,9 @@ gem 'whenever', :require => false
 #For DataGrid
 gem 'datagrid'
 #For pagination
-gem 'will_paginate', '~> 3.0.6'
+gem 'kaminari'
+#For Charts
+gem 'chartkick'
 #For managing evironment vars
 gem 'figaro'
 
