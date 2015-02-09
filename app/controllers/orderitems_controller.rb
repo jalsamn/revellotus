@@ -3,7 +3,7 @@ class OrderitemsController < ApplicationController
   # GET /orderitems
   # GET /orderitems.json
   def index
-    
+ 
     @itemsperday = Groupedtotal
     .select("name, SUM(totalsold) as totalsold")
     .where(created_date: params[:start_date]..params[:end_date])
