@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rev_inventories
+
   resources :allsales
   resources :orderitems
 

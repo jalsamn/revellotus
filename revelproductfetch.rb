@@ -32,7 +32,7 @@ hash = parser.parse(json)
      
         next if prod["establishment"] == "/enterprise/Establishment/2/"
       
-          product = Product.find_by barcode: prod["barcode"]
+          product = Product.find_by(barcode: prod["barcode"])
           product.name = prod["name"]
           product.sku = prod["sku"]
           product.barcode = prod["barcode"]

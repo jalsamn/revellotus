@@ -25,14 +25,6 @@ every :day, :at => '11:00am' do
   set :output, '/var/www/apps/12851/current/log/custom_deploy_after_migrate.log'
 end
 
-
-
-every :day, :at => '12:50am' do
-  command "echo \"I am running from cron for revel import!"
-  runner "revelproductfetch.rb"
-  set :output, '/var/www/apps/12851/current/log/custom_deploy_after_migrate.log'
-end
-
 every 2.hours do
   command "echo \"I am running from cron for revel import!"
   runner "revelproductfetch.rb"
