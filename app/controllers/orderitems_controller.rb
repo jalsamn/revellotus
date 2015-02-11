@@ -33,7 +33,7 @@ class OrderitemsController < ApplicationController
     .joins('LEFT OUTER JOIN rinventors ON rinventors.rproductid = productid')
     .group("name, rinventors.theoretical_ending_inventory")
     .having('rinventors.theoretical_ending_inventory > ?', params[:minventory])
-    .sort_by(&:totalsold).reverse
+    .sort_by(&:inventoryonhand).reverse
     
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end
