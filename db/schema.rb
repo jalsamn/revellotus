@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209234314) do
+ActiveRecord::Schema.define(version: 20150211011906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,20 @@ ActiveRecord::Schema.define(version: 20150209234314) do
 
   create_table "rev_inventories", force: true do |t|
     t.date     "update_date"
-    t.integer  "product"
+    t.integer  "productid"
+    t.decimal  "starting_amount"
+    t.decimal  "added_amount"
+    t.decimal  "threshold"
+    t.decimal  "sold_amount"
+    t.decimal  "actual_amount"
+    t.decimal  "theoretical_ending_inventory"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rinventors", force: true do |t|
+    t.date     "update_date"
+    t.integer  "rproductid"
     t.decimal  "starting_amount"
     t.decimal  "added_amount"
     t.decimal  "threshold"

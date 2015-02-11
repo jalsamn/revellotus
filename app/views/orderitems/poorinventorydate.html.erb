@@ -1,0 +1,11 @@
+
+<%= form_tag(poorinventorydate_path) do %>
+<%= select_date Date.today, :prefix => :start_date %>
+<%= select_date Date.today, :prefix => :end_date %>><br>
+<br><br><h3> Enter Max Sold in date range </h3>
+<%= number_field_tag :maxsold, :min => 0, :max => 250 %>
+<br><h3> Enter Min Inventory in stock </h3>
+<%= text_field_tag :mininventory %>
+<br><h3>  </h3>
+<%= submit_tag "Submit", :disable_with => "Submitting..." %>
+<% end %>

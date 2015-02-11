@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Update date:</strong>
+  <%= @rinventor.update_date %>
+</p>
+
+<p>
+  <strong>Rproductid:</strong>
+  <%= @rinventor.rproductid %>
+</p>
+
+<p>
+  <strong>Starting amount:</strong>
+  <%= @rinventor.starting_amount %>
+</p>
+
+<p>
+  <strong>Added amount:</strong>
+  <%= @rinventor.added_amount %>
+</p>
+
+<p>
+  <strong>Threshold:</strong>
+  <%= @rinventor.threshold %>
+</p>
+
+<p>
+  <strong>Sold amount:</strong>
+  <%= @rinventor.sold_amount %>
+</p>
+
+<p>
+  <strong>Actual amount:</strong>
+  <%= @rinventor.actual_amount %>
+</p>
+
+<p>
+  <strong>Theoretical ending inventory:</strong>
+  <%= @rinventor.theoretical_ending_inventory %>
+</p>
+
+<%= link_to 'Edit', edit_rinventor_path(@rinventor) %> |
+<%= link_to 'Back', rinventors_path %>

@@ -1,60 +1,53 @@
-time1    = Date.yesterday
-time2 = Time.new
-
-address = "https://lotusmarket.revelup.com/resources/OrderItem/?format=json&limit=5000000000&updated_date__gte=" << time1.year.to_s << "-" << time1.month.to_s << "-" << time1.day.to_s << "&updated_date__lt=" << time2.year.to_s << "-" << time2.month.to_s << "-" << time2.day.to_s
-
-result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' '#{address}' -O 'scripts/RevOrderItems.json' --timeout=6000")
-
-
+result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/Product/?format=json&limit=50' -O 'RevProducts.json'")
 if result.nil?
   puts "Error was #{$?}"
 elsif result
   puts "Grabbed the JSON from Revel!"
 end
-
-
-$objArray = []
-json = File.new('scripts/RevOrderItems.json', 'r')
+  
+  
+json = File.new('RevProducts.json', 'r')
 parser = Yajl::Parser.new
 hash = parser.parse(json)
 
 
-  hash["objects"].each do |oi|
-    begin
-    
-        orderitem = Orderitem.new
-        orderitem.cost = oi["cost"]
-        orderitem.created_by = oi["created_by"]
-        crtddate = oi["created_date"]
-        newcrtddate = crtddate.scan(/^.{0,10}/)
-        newcrtddate1 = newcrtddate.join()
-        orderitem.created_date = newcrtddate1
-        orderitem.rev_id = oi["id"]
-        orderitem.order_local_id = oi["order_local_id"]
-        str =  oi["product"].to_s
-        newstr = str.scan(/\d+/)
-        newstr1 = newstr.join()
-        orderitem.productid = newstr1
-        orderitem.product_name_override = oi["product_name_override"]
-        orderitem.initial_price = oi["initial_price"]
-        orderitem.price = oi["price"]
-        orderitem.pure_sales = oi["pure_sales"]
-        orderitem.revquantity = oi["quantity"]
-        deca = oi["price"]
-        decb = oi["initial_price"]
-    
-        orderitem.actualqty = (deca.to_f / decb.to_f)
-        upddate = oi["updated_date"]
-        newupddate = upddate.scan(/^.{0,10}/)
-        newupddate1 = newupddate.join()
-        orderitem.updated_date = newupddate1
-        orderitem.save
-   
-    
-   
-    rescue 
-        $objArray.push "Error encountered @ " + oi["product_name_override"]
-        puts "Error encountered @ " + oi["product_name_override"]
-    end
-  
+  hash["objects"].each do |prod|
+  begin
+    if !Product.exists?(:barcode => prod["barcode"])
+      next if prod["establishment"] == "/enterprise/Establishment/2/"
+        product = Product.new
+        product.name = prod["name"]
+        product.sku = prod["sku"]
+        product.barcode = prod["barcode"]
+        product.category = prod["category"]
+        product.rewardpoint = prod["point_value"]
+        product.cost = prod["cost"]
+        product.active = prod["active"]
+        product.price = prod["price"]
+        product.revid = prod["id"]
+        product.save
+        puts "Added product with id "
+        puts prod["id"]
+    else
+     
+        next if prod["establishment"] == "/enterprise/Establishment/2/"
+      
+          product = Product.find_by(barcode: prod["barcode"])
+          product.name = prod["name"]
+          product.sku = prod["sku"]
+          product.barcode = prod["barcode"]
+          product.category = prod["category"]
+          product.rewardpoint = prod["point_value"]
+          product.cost = prod["cost"]
+          product.active = prod["active"]
+          product.price = prod["price"]
+          product.revid = prod["id"]
+          product.save
+          puts "Updated product with id "
+          puts prod["id"] 
+    end  
+   rescue 
+    puts "Error was #{$?}"
   end
+  end
+
