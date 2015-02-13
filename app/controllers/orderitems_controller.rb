@@ -26,12 +26,15 @@ class OrderitemsController < ApplicationController
   end
   
   def poorinventory
-     @itemsperday = Groupedtotal
-    .select("name, SUM(totalsold) as totalsold")
-    .where(created_date: params[:start_date]..params[:end_date])
-    .having('SUM(totalsold) < ?', params[:msold])
-    .group("name")
-    .sort_by(&:totalsold).reverse
+         @itemsperday = Groupedtotal
+          .select("name, SUM(totalsold) as totalsold, rinventors.theoretical_ending_inventory as inventoryonhand")
+          .where(created_date: params[:start_date]..params[:end_date])
+          .having('SUM(totalsold) < ?', params[:msold])
+          .joins('LEFT OUTER JOIN rinventors ON rinventors.rproductid = productid')
+          .group("name, rinventors.theoretical_ending_inventory")
+          .having('rinventors.theoretical_ending_inventory > ?', params[:minventory])
+          .sort_by(&:inventoryonhand).reverse
+          .group("name")
     
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end
