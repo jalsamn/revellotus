@@ -51,30 +51,25 @@ class OrderitemsController < ApplicationController
     end
   end
   
-  def salesbycategorydate
+  def salesforproducedate
     if params[:start_date] && params[:end_date]
       end_params = params[:end_date]
       start_params = params[:start_date]
       start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
       end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
-      msold = params[:maxsold]
-      minventory = params[:mininventory]
     
-      redirect_to :action => 'poorinventory', :start_date => start_date, :end_date => end_date, :msold => msold, :minventory => minventory
+      redirect_to :action => 'salesforproduce', :start_date => start_date, :end_date => end_date
     end
   end
  
-  def salesbycategory
-         @itemsperday = Groupedtotal
-          .select("name, SUM(totalsold) as totalsold, rinventors.theoretical_ending_inventory as inventoryonhand")
-          .where(created_date: params[:start_date]..params[:end_date])
-          .having('SUM(totalsold) < ?', params[:msold])
-          .joins('LEFT OUTER JOIN rinventors ON rinventors.rproductid = productid')
-          .group("name, rinventors.theoretical_ending_inventory")
-          .having('rinventors.theoretical_ending_inventory > ?', params[:minventory])
-          .sort_by(&:inventoryonhand).reverse
-          .group("name")
-    
+  def salesforproduce
+    @itemsperday = Groupedtotal
+    .select("name, SUM(totalsold) as totalsold, category")
+      .where(created_date: params[:start_date]..params[:end_date]) 
+      .where(category: '/products/category/120/')
+      .group("name, category")
+      .sort_by(&:totalsold).reverse
+        
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end
   

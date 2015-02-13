@@ -1,0 +1,6 @@
+
+<%= form_tag(salesforproducedate_path) do %>
+<%= select_date Date.today, :prefix => :start_date %>
+<%= select_date Date.today, :prefix => :end_date %>>
+<%= submit_tag "Submit", :disable_with => "Submitting..." %>
+<% end %>
