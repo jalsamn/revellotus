@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 201502130340531) do
 
   add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true, using: :btree
 
+  create_table "produce_order_items", force: true do |t|
+    t.string   "producename"
+    t.decimal  "quantity"
+    t.integer  "produce_order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "produce_orders", force: true do |t|
+    t.string   "vendor"
+    t.date     "orderdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "sku",         limit: 8

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Producename:</strong>
+  <%= @produce_order_item.producename %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @produce_order_item.quantity %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @produce_order_item.order_id %>
+</p>
+
+<%= link_to 'Edit', edit_produce_order_item_path(@produce_order_item) %> |
+<%= link_to 'Back', produce_order_items_path %>

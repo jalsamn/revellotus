@@ -73,52 +73,6 @@ class OrderitemsController < ApplicationController
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end
   
-  
-
-
-  # GET /orderitems/1
-  # GET /orderitems/1.json
-  def show
-  end
-
-  # GET /orderitems/new
-  def new
-    @orderitem = Orderitem.new
-  end
-
-  # GET /orderitems/1/edit
-  def edit
-  end
-
-  # POST /orderitems
-  # POST /orderitems.json
-  def create
-    @orderitem = Orderitem.new(orderitem_params)
-
-    respond_to do |format|
-      if @orderitem.save
-        format.html { redirect_to @orderitem, notice: 'Orderitem was successfully created.' }
-        format.json { render :show, status: :created, location: @orderitem }
-      else
-        format.html { render :new }
-        format.json { render json: @orderitem.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /orderitems/1
-  # PATCH/PUT /orderitems/1.json
-  def update
-    respond_to do |format|
-      if @orderitem.update(orderitem_params)
-        format.html { redirect_to @orderitem, notice: 'Orderitem was successfully updated.' }
-        format.json { render :show, status: :ok, location: @orderitem }
-      else
-        format.html { render :edit }
-        format.json { render json: @orderitem.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /orderitems/1
   # DELETE /orderitems/1.json

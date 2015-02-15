@@ -1,0 +1,40 @@
+<%= form_for(@produce_order) do |f| %>
+  <% if @produce_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produce_order.errors.count, "error") %> prohibited this produce_order from being saved:</h2>
+
+      <ul>
+      <% @produce_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+  <div class="field">
+   
+    <%= f.label :vendor %><br>
+    <%= f.text_field :vendor %>
+  </div>
+  <div class="field">
+    <%= f.label :orderdate %><br>
+    <%= f.date_select :orderdate %>
+  </div>
+
+  <% #for produce_order_item in @produce_order.produce_order_items %>
+  <% @produce_order.produce_order_items.each.with_index do |produce_order_item,index| %>
+
+    <%= fields_for "produce_order[produce_order_items_attr][]", produce_order_item do |task_form| %>
+      <p>
+        <%= @allproduce.fetch(index).name.to_s %> <%= task_form.hidden_field :producename, :value => @allproduce.fetch(index).name.to_s %>
+        Quantity: <%= task_form.text_field :quantity %>
+      </p>
+    <% end %>
+    <% end %>
+
+
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ <i class="icon-ok icon-white"></i> Create
+<% end %>
+<% end %>

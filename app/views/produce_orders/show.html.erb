@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @produce_order.vendor %>
+</p>
+
+<p>
+  <strong>Orderdate:</strong>
+  <%= @produce_order.orderdate %>
+</p>
+
+ <h2>Order Items</h2>
+<div>
+<table class="table table-bordered table-striped">
+  <thead>
+        <tr>
+            <th>Produce</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+
+<tbody>
+ 
+    <% @produce_order.produce_order_items.each do |item| %>
+   <tr>
+     <td> <%= item.producename %> </td>
+      <td>  <%= item.quantity %> </td>
+      
+   </tr>
+    <% end %>
+  
+</tbody>
+</table>
+</div>
+
+<%= link_to 'Edit', edit_produce_order_path(@produce_order) %> |
+<%= link_to 'Back', produce_orders_path %>
