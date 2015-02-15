@@ -22,19 +22,31 @@
     <%= f.date_select :orderdate %>
   </div>
 
-  <% #for produce_order_item in @produce_order.produce_order_items %>
-  <% @produce_order.produce_order_items.each.with_index do |produce_order_item,index| %>
+  <div>
+  <table class="table table-bordered table-striped">
+    <thead>
+          <tr>
+              <th>Produce</th>
+              <th>Quantity</th>
+          </tr>
+      </thead>
 
-    <%= fields_for "produce_order[produce_order_items_attr][]", produce_order_item do |task_form| %>
-      <p>
-        <%= @allproduce.fetch(index).name.to_s %> <%= task_form.hidden_field :producename, :value => @allproduce.fetch(index).name.to_s %>
-        Quantity: <%= task_form.text_field :quantity %>
-      </p>
-    <% end %>
-    <% end %>
+  <tbody>
+    <% @produce_order.produce_order_items.each.with_index do |produce_order_item,index| %>
 
+      <%= fields_for "produce_order[produce_order_items_attr][]", produce_order_item do |task_form| %>
+        <tr>
+       <td><%= @allproduce.fetch(index).name.to_s %> <%= task_form.hidden_field :producename, :value => @allproduce.fetch(index).name.to_s %> </td>
+          <td> <%= task_form.text_field :quantity %> </td>
+        </tr>
+      <% end %>
+      <% end %>
+  </tbody>
+  </table>
+  </div>
 
   <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
- <i class="icon-ok icon-white"></i> Create
-<% end %>
+<i class="icon-ok icon-white"></i> Create Order
+<% end %> 
+<br><br>
 <% end %>
