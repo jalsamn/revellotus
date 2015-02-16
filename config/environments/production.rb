@@ -82,10 +82,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
  # config.action_mailer.delivery_method = :smtp
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {domain: 'app123example.mailgun.org'}
+
   
-  # SMTP settings for gmail
+  # SMTP settings for Mandrill
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
