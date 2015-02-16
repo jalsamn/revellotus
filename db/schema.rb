@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 201502130340531) do
 
   create_table "produce_order_items", force: true do |t|
     t.string   "producename"
-    t.decimal  "quantity"
+    t.string   "quantity"
     t.integer  "produce_order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "instock"
+    t.string   "instock"
     t.text     "remark"
   end
 

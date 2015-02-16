@@ -10,10 +10,8 @@
     <table class="table table-bordered table-striped">
       <thead>
             <tr>
-                <th>Produce</th>
-                <th>Order Qty</th>
-                <th>InStock Qty</th>
-                <th>Remark</th>
+                <th>Produce     </th>
+                <th>Order Qty   </th>
             </tr>
         </thead>
 
@@ -23,9 +21,7 @@
       <% next if item.quantity == nil %>
        <tr>
          <td> <%= item.producename %> </td>
-          <td>  <%= item.quantity %> </td>
-         <td> <%= item.instock %> </td>
-         <td>  <%= item.remark %> </td>
+          <td>   <%= item.quantity %> </td>
        </tr>
         <% end %>
 
