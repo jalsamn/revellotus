@@ -30,9 +30,9 @@ class ProduceOrdersController < ApplicationController
   # POST /produce_orders.json
   def create
     @produce_order = ProduceOrder.new(produce_order_params)
-
     respond_to do |format|
       if @produce_order.save
+        ProduceOrderMailer.produce_order_email(@produce_order).deliver
         format.html { redirect_to @produce_order, notice: 'Produce order was successfully created.' }
         format.json { render :show, status: :created, location: @produce_order }
       else

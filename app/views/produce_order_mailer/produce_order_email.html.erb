@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Produce Order for <%= Date.today %> </h1>
+    <h3>Vendor: <%= @items.vendor %> </h3>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+            <tr>
+                <th>Produce</th>
+                <th>Order Qty</th>
+                <th>InStock Qty</th>
+                <th>Remark</th>
+            </tr>
+        </thead>
+
+    <tbody>
+
+        <% @items.produce_order_items.each do |item| %>
+       <tr>
+         <td> <%= item.producename %> </td>
+          <td>  <%= item.quantity %> </td>
+         <td> <%= item.instock %> </td>
+         <td>  <%= item.remark %> </td>
+       </tr>
+        <% end %>
+
+    </tbody>
+    </table>
+  </body>
+</html>

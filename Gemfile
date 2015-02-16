@@ -22,6 +22,8 @@ gem 'chartkick'
 #For managing evironment vars
 gem 'figaro'
 
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
