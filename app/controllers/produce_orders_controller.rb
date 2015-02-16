@@ -17,6 +17,13 @@ class ProduceOrdersController < ApplicationController
     @produce_order = ProduceOrder.new
     @producenum = Product.where(category: '/products/ProductCategory/120/').count
     @allproduce = Product.where(category: '/products/ProductCategory/120/')
+    @producesales = Groupedtotal
+      .select("name, SUM(totalsold) as totalsold, productid")
+      .where(created_date: '2015-01-01'..'2015-08-01') 
+      .where(category: '/products/ProductCategory/120/')
+      .group("name, productid")
+      .sort_by(&:totalsold).reverse
+    
     @producenum.times {@produce_order.produce_order_items.build}
   end
 
@@ -72,6 +79,6 @@ class ProduceOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def produce_order_params
-     params.require(:produce_order).permit(:vendor, :orderdate, produce_order_items_attr: [:id, :producename, :quantity])
+     params.require(:produce_order).permit(:vendor, :orderdate, produce_order_items_attr: [:id, :producename, :quantity, :instock, :remark])
     end
 end

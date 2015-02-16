@@ -16,7 +16,9 @@
   <thead>
         <tr>
             <th>Produce</th>
-            <th>Quantity</th>
+            <th>Order Qty</th>
+            <th>InStock Qty</th>
+            <th>Remark</th>
         </tr>
     </thead>
 
@@ -26,7 +28,8 @@
    <tr>
      <td> <%= item.producename %> </td>
       <td>  <%= item.quantity %> </td>
-      
+     <td> <%= item.instock %> </td>
+     <td>  <%= item.remark %> </td>
    </tr>
     <% end %>
   

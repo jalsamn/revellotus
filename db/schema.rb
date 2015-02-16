@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.integer  "produce_order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "instock"
+    t.text     "remark"
   end
 
   create_table "produce_orders", force: true do |t|

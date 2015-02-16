@@ -27,7 +27,10 @@
     <thead>
           <tr>
               <th>Produce</th>
-              <th>Quantity</th>
+              <th>Order Qty</th>
+              <th>Instock Qty</th>
+              <th>Remark</th>
+              <th>Mon-Sun Sales</th>
           </tr>
       </thead>
 
@@ -36,8 +39,11 @@
 
       <%= fields_for "produce_order[produce_order_items_attr][]", produce_order_item do |task_form| %>
         <tr>
-       <td><%= @allproduce.fetch(index).name.to_s %> <%= task_form.hidden_field :producename, :value => @allproduce.fetch(index).name.to_s %> </td>
-          <td> <%= task_form.text_field :quantity %> </td>
+           <td><%= @allproduce.fetch(index).name.to_s %> <%= task_form.hidden_field :producename, :value => @allproduce.fetch(index).name.to_s %> </td>
+           <td> <%= task_form.text_field :quantity %> </td>
+          <td> <%= task_form.text_field :instock %> </td>
+          <td> <%= task_form.text_field :remark %> </td>
+          <td> <%= @producesales.find{|producesale| producesale["productid"] = @allproduce.fetch(index).revid }.totalsold %> </td>
         </tr>
       <% end %>
       <% end %>
