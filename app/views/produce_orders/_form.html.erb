@@ -51,7 +51,12 @@
               .group("name, productid")
               .sort_by(&:totalsold).reverse %>
           
-          <td> <%= @psale.first.totalsold %> </td>
+          <td> 
+            <% begin %>
+            <%= @psale.first.totalsold %> 
+            <% rescue 
+                next
+              end %> </td>
         </tr>
       <% end %>
       <% end %>
