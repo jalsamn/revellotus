@@ -43,7 +43,15 @@
            <td> <%= task_form.text_field :quantity %> </td>
           <td> <%= task_form.text_field :instock %> </td>
           <td> <%= task_form.text_field :remark %> </td>
-          <td> <%= @producesales.find{|producesale| producesale["productid"] = @allproduce.fetch(index).revid }.totalsold %> </td>
+          <% @psale = Groupedtotal
+              .select("name, SUM(totalsold) as totalsold, productid")
+              .where(created_date: '2015-01-01'..'2015-08-01')
+              .where(productid: @allproduce.fetch(index).revid)
+              .where(category: '/products/ProductCategory/120/')
+              .group("name, productid")
+              .sort_by(&:totalsold).reverse %>
+          
+          <td> <%= @psale.first.totalsold %> </td>
         </tr>
       <% end %>
       <% end %>

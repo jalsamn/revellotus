@@ -17,12 +17,7 @@ class ProduceOrdersController < ApplicationController
     @produce_order = ProduceOrder.new
     @producenum = Product.where(category: '/products/ProductCategory/120/').count
     @allproduce = Product.where(category: '/products/ProductCategory/120/')
-    @producesales = Groupedtotal
-      .select("name, SUM(totalsold) as totalsold, productid")
-      .where(created_date: '2015-01-01'..'2015-08-01') 
-      .where(category: '/products/ProductCategory/120/')
-      .group("name, productid")
-      .sort_by(&:totalsold).reverse
+    
     
     @producenum.times {@produce_order.produce_order_items.build}
   end
