@@ -44,7 +44,7 @@
           <td> <%= task_form.text_field :instock %> </td>
           <td> <%= task_form.text_field :remark %> </td>
           <% @date1 = 9.days.ago 
-             @date2 = 2.days.ago 
+             @date2 = @date1 + 10.days 
             @psale = Groupedtotal
               .select("name, SUM(totalsold) as totalsold, productid")
               .where(created_date: @date1..@date2)
