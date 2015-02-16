@@ -43,9 +43,11 @@
            <td> <%= task_form.text_field :quantity %> </td>
           <td> <%= task_form.text_field :instock %> </td>
           <td> <%= task_form.text_field :remark %> </td>
-          <% @psale = Groupedtotal
+          <% @date1 = 9.days.ago 
+             @date2 = 2.days.ago 
+            @psale = Groupedtotal
               .select("name, SUM(totalsold) as totalsold, productid")
-              .where(created_date: '2015-01-01'..'2015-08-01')
+              .where(created_date: @date1..@date2)
               .where(productid: @allproduce.fetch(index).revid)
               .where(category: '/products/ProductCategory/120/')
               .group("name, productid")
@@ -56,7 +58,7 @@
             <%= @psale.first.totalsold %> 
             <% rescue 
                 next
-              end %> </td>
+               end %> </td>
         </tr>
       <% end %>
       <% end %>
