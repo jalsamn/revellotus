@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Produce Order for <%= Date.today %> </h1>
+    <h1>Produce Order for <%= Date.today.to_time.strftime('%B %e') %> </h1>
     <h3>Vendor: <%= @items.vendor %> </h3>
     
     <table class="table table-bordered table-striped">
@@ -20,6 +20,7 @@
     <tbody>
 
         <% @items.produce_order_items.each do |item| %>
+      <% next if item.quantity == nil %>
        <tr>
          <td> <%= item.producename %> </td>
           <td>  <%= item.quantity %> </td>

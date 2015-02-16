@@ -3,7 +3,7 @@ class ProduceOrderMailer < ActionMailer::Base
   
   def produce_order_email(items)
      @items = items
-    mail to: "jalsamn@gmail.com", subject: "Produce Order for " + @items.vendor + " , Date: " + Date.today 
+    mail to: "jalsamn@gmail.com", subject: "Produce Order for " + @items.vendor + " , Date: " + Date.today.to_time.strftime('%B %e') 
 
   end
   

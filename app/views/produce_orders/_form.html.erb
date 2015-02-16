@@ -44,14 +44,14 @@
           <td> <%= task_form.text_field :instock %> </td>
           <td> <%= task_form.text_field :remark %> </td>
           <% @date1 = 9.days.ago 
-             @date2 = @date1 + 10.days 
-            @psale = Groupedtotal
-              .select("name, SUM(totalsold) as totalsold, productid")
-              .where(created_date: @date1..@date2)
-              .where(productid: @allproduce.fetch(index).revid)
-              .where(category: '/products/ProductCategory/120/')
-              .group("name, productid")
-              .sort_by(&:totalsold).reverse %>
+             @date2 = @date1 + 7.days 
+             @psale = Groupedtotal
+                .select("name, SUM(totalsold) as totalsold, productid")
+                .where(created_date: @date1..@date2)
+                .where(productid: @allproduce.fetch(index).revid)
+                .where(category: '/products/ProductCategory/120/')
+                .group("name, productid")
+                .sort_by(&:totalsold).reverse %>
           
           <td> 
             <% begin %>

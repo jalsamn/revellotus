@@ -3,9 +3,8 @@ class ProduceOrder < ActiveRecord::Base
   
   def produce_order_items_attr=(produce_order_items_attr)
     produce_order_items_attr.each do |attributes|
-    produce_order_items.build(attributes)
+        produce_order_items.build(attributes)
+      end
   end
-  end
-
 
 end
