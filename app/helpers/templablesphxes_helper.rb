@@ -1,0 +1,2 @@
+module TemplablesphxesHelper
+end

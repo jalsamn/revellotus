@@ -1,0 +1,21 @@
+<%= form_for(@templabel) do |f| %>
+  <% if @templabel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@templabel.errors.count, "error") %> prohibited this templabel from being saved:</h2>
+
+      <ul>
+      <% @templabel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :barcode %><br>
+    <%= f.number_field :barcode %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Label" %>
+  </div>
+<% end %>

@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 201502130340531) do
 
   add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true, using: :btree
 
+  create_table "phxtemplabels", force: true do |t|
+    t.integer  "barcode",    limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "produce_order_items", force: true do |t|
     t.string   "producename"
     t.string   "quantity"
@@ -97,6 +103,12 @@ ActiveRecord::Schema.define(version: 201502130340531) do
 
   create_table "templabels", force: true do |t|
     t.integer  "barcode",    limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "templablesphxes", force: true do |t|
+    t.integer  "barcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

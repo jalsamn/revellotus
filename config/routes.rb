@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :produce_order_items
 
   resources :produce_orders
@@ -9,9 +10,10 @@ Rails.application.routes.draw do
 
   resources :allsales
   resources :orderitems
-
+    resources :phxtemplabels 
   resources :templabels 
   get 'csv', to: 'templabels#spitcsv'
+  get 'csvphx', to: 'phxtemplabels#spitcsv'
   get 'labelmessage', to: 'templabels#labelmessage'
   #get 'totalsales', to: 'orderitems#totalsales'
   match 'totalsales', to: 'orderitems#totalsales', via: [:get, :post]
