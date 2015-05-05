@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 201502130340531) do
   add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true, using: :btree
 
   create_table "phxtemplabels", force: true do |t|
-    t.integer  "barcode",    limit: 8
+    t.string   "barcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 201502130340531) do
   end
 
   create_table "templabels", force: true do |t|
-    t.integer  "barcode",    limit: 8
+    t.string   "barcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
