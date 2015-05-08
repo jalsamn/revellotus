@@ -11,6 +11,8 @@ gem 'pg'
 gem "wice_grid", '3.4.2'
 gem "jquery-ui-rails"
 gem 'ninefold'
+gem 'rails_12factor'
+
 # For scheduling cron jobs
 gem 'whenever', :require => false
 #For DataGrid
