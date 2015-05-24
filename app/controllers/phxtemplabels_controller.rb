@@ -101,7 +101,7 @@ class PhxtemplabelsController < ApplicationController
      ftp.putbinaryfile(file, remotefile = File.basename(file))
      Phxtemplabel.delete_all()
      ftp.close
-     redirect_to labelmessage_path, :notice => ""
+     redirect_to phxlabelmessage_path, :notice => ""
   end
     
   def labelmessage
