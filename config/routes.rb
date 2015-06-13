@@ -6,8 +6,12 @@ Rails.application.routes.draw do
     scope module: :v1 do
       # We are going to list our resources here
       resources :users, :only => [:show]
+      #FOR MESA
       resources :templabels, :only => [:index, :create, :show]
       get 'csv', to: 'templabels#spitcsv'
+      #FOR Phoenix
+      resources :phxtemplabels, :only => [:index, :create, :show]
+      get 'phxcsv', to: 'templabels#spitcsv'
     end
   end
   
