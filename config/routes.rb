@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  
+  ###### API ROUTES #######
+  
+  namespace :api, defaults: { format: :json } do
+    scope module: :v1 do
+      # We are going to list our resources here
+      resources :users, :only => [:show]
+      resources :templabels, :only => [:index, :create, :show]
+      get 'csv', to: 'templabels#spitcsv'
+    end
+  end
+  
+  #########################
+  
+
+  resources :productrequests
 
   resources :produce_order_items
 

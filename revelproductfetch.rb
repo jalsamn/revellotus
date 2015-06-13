@@ -1,6 +1,6 @@
 require 'net/ftp'
 
-result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/Product/?format=json&establishment=1&limit=50000000000000' -O 'RevProducts.json'")
+result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/Product/?format=json&establishment=1&limit=50' -O 'RevProducts.json'")
 if result.nil?
   puts "Error was #{$?}"
 elsif result
@@ -29,6 +29,7 @@ hash = parser.parse(json)
         product.active = prod["active"]
         product.price = prod["price"]
         product.revid = prod["id"]
+        product.location = prod["establishment"]
         product.save
         puts "Added product with id "
         puts prod["id"]
@@ -46,6 +47,7 @@ hash = parser.parse(json)
           product.active = prod["active"]
           product.price = prod["price"]
           product.revid = prod["id"]
+          product.location = prod["establishment"]
           product.save
           puts "Updated product with id "
           puts prod["id"] 

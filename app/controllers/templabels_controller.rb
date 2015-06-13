@@ -1,4 +1,5 @@
 class TemplabelsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   layout 'templabel'
   before_action :set_templabel, only: [:show, :edit, :update, :destroy]
 

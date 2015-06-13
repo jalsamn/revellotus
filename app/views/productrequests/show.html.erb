@@ -1,0 +1,29 @@
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @productrequest.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @productrequest.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @productrequest.phone %>
+</p>
+
+<p>
+  <strong>Fullfilled:</strong>
+  <%= @productrequest.fullfilled %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @productrequest.location %>
+</p>
+
+<%= link_to 'Edit', edit_productrequest_path(@productrequest) %> |
+<%= link_to 'Back', productrequests_path %>

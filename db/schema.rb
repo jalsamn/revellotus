@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 201502130340531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orderitems", force: true do |t|
     t.decimal  "cost"
     t.string   "created_by"
@@ -32,6 +38,7 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.date     "updated_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location"
   end
 
   add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true, using: :btree
@@ -59,6 +66,16 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.datetime "updated_at"
   end
 
+  create_table "productrequests", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.boolean  "fullfilled"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "sku",         limit: 8
@@ -73,6 +90,7 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.decimal  "price"
     t.integer  "revid",       limit: 8
     t.integer  "productid"
+    t.string   "location"
   end
 
   create_table "rev_inventories", force: true do |t|
@@ -112,5 +130,23 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -10,7 +10,6 @@ gem 'pg'
 
 gem "wice_grid", '3.4.2'
 gem "jquery-ui-rails"
-gem 'ninefold'
 gem 'rails_12factor'
 
 # For scheduling cron jobs
@@ -48,6 +47,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'yajl-ruby', require: 'yajl'
+
+gem 'rails-api'
+gem 'devise'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
