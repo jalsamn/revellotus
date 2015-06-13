@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get 'csv', to: 'templabels#spitcsv'
       #FOR Phoenix
       resources :phxtemplabels, :only => [:index, :create, :show]
-      get 'phxcsv', to: 'templabels#spitcsv'
+      get 'phxcsv', to: 'phxtemplabels#spitcsv'
     end
   end
   
