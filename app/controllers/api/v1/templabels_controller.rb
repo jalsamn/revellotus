@@ -1,4 +1,4 @@
-class Api::V1::TemplabelsController < ApplicationController
+class Api::V1::ApitemplabelsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
   before_filter :restrict_access
   respond_to :json
