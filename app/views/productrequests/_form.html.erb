@@ -1,4 +1,4 @@
-<%= form_for(@productrequest) do |f| %>
+<%= bootstrap_form_for(@productrequest) do |f| %>
   <% if @productrequest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@productrequest.errors.count, "error") %> prohibited this productrequest from being saved:</h2>
@@ -14,20 +14,20 @@
 
 
   <div class="field">
-    <%= f.label "Product Name" %><br>
+    <h3> <%= f.label "Product Name" %></h3>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+   <h3> <%= f.label :email %></h3>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :phone %> (Optional, if you would like to be notified)<br>
+   <h3> <%= f.label :phone %> (Optional, if you would like to be notified)</h3>
     <%= f.text_field :phone %>
   </div>
 
   <div class="field">
-    <%= f.label :location %><br>
+   <h3> <%= f.label :location %></h3>
     <%= f.select :location, [['North Phoenix','phx'],['Mesa','mesa']] %>
 
   </div>
