@@ -21,7 +21,8 @@ module Revellotus
     # config.i18n.default_locale = :de
     config.api_only = false
     config.serve_static_assets = true
-
+    config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+    config.assets.compile = true
 
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
