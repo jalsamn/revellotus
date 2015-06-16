@@ -20,6 +20,7 @@ module Revellotus
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.api_only = false
+    config.serve_static_assets = true
 
 
     config.middleware.insert_before 0, "Rack::Cors" do
