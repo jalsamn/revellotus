@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New Product Request for <%= @request.name %> </h1>
+    <h3>Date: <%= Date.today.to_time.strftime('%B %e') %> </h3>
+    <h3>Location: <%= @request.location %>  </h3>
+    <h3>Email:  <%= @request.email %>  </h3>
+    <h3>Phone:  <%= @request.phone %>  </h3>
+
+  </body>
+</html>

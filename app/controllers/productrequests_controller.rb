@@ -1,6 +1,6 @@
 class ProductrequestsController < ApplicationController
   layout 'productrequest'
-
+  http_basic_authenticate_with name: "admin", password: "1af2af3af4af5", except: [:new, :create]
   before_action :set_productrequest, only: [:show, :edit, :update, :destroy]
 
   # GET /productrequests
@@ -27,7 +27,7 @@ class ProductrequestsController < ApplicationController
   # POST /productrequests.json
   def create
     @productrequest = Productrequest.new(productrequest_params)
-
+    ProductrequestMailer.productrequest_email(@productrequest).deliver
     respond_to do |format|
       if @productrequest.save
         format.html { 
