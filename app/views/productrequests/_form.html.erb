@@ -15,24 +15,22 @@
 
 
   <div class="field">
-    <h3> <%= f.label "Product Name" %></h3>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, label: "Product Name" %>
   </div>
   <div class="field">
-   <h3> <%= f.label :email %></h3>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, label: "Email (Required)" %>
   </div>
   <div class="field">
-   <h3> <%= f.label :phone %> (Optional, if you would like to be notified)</h3>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, label: "Phone (Optional)" %>
   </div>
 
   <div class="field">
-   <h3> <%= f.label :location %></h3>
     <%= f.select :location, [['North Phoenix','phx'],['Mesa','mesa']] %>
 
   </div>
   <div class="actions">
     <%= f.submit "Submit Request", data: { disable_with: "Please wait..." } %> 
   </div>
+
+<h3> We will try our best to get your requested product to our store as soon as possible. We will notify you via email unless you entered your phone number. Thank You</h3>
 <% end %>
