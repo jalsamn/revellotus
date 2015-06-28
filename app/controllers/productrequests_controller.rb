@@ -34,6 +34,7 @@ class ProductrequestsController < ApplicationController
   # POST /productrequests.json
   def create
     @productrequest = Productrequest.new(productrequest_params)
+    @productrequest.status = "active"
     respond_to do |format|
       if @productrequest.save
         format.html { 

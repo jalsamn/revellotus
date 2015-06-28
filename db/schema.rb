@@ -70,10 +70,10 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.boolean  "fullfilled"
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "products", force: true do |t|

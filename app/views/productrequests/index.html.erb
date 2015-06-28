@@ -10,6 +10,7 @@
       <th>Email</th>
       <th>Phone</th>
       <th>Location</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,8 +23,9 @@
         <td><%= productrequest.email %></td>
         <td><%= productrequest.phone %></td>
         <td><%= productrequest.location %></td>
-        <td><%= link_to 'Show', productrequest %></td>
-        <td><%= link_to 'Edit', edit_productrequest_path(productrequest) %></td>
+        <td><%= productrequest.status %></td>
+        <td><%= link_to 'Fullfilled', productrequest %></td>
+        <td><%= link_to 'NotFullfilled', edit_productrequest_path(productrequest) %></td>
         <td><%= link_to 'Destroy', productrequest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
