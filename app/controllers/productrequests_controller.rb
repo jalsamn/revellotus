@@ -7,6 +7,10 @@ class ProductrequestsController < ApplicationController
   # GET /productrequests.json
   def index
     @productrequests = Productrequest.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @products.to_csv }
+  end
   end
 
   # GET /productrequests/1
@@ -32,6 +36,7 @@ class ProductrequestsController < ApplicationController
       if @productrequest.save
         format.html { 
           flash[:success] = "Your product request has been created"
+              ProductrequestMailer.productrequest_inprogress_email(@productrequest).deliver
           redirect_to new_productrequest_path }
         format.json { render :show, status: :created, location: @productrequest }
       else
