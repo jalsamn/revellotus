@@ -1,0 +1,5 @@
+<%- headers = ['ProductName', 'Email', 'Date', 'Location'] -%>
+<%= CSV.generate_line headers %>
+<%- @productrequests.each do |pr| -%>
+    <%= CSV.generate_line([pr.name, pr.email, pr.created_at, pr.location]).html_safe.strip %>
+<%- end -%>

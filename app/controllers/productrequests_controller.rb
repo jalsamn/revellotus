@@ -9,7 +9,10 @@ class ProductrequestsController < ApplicationController
     @productrequests = Productrequest.all
     respond_to do |format|
       format.html
-      format.csv { send_data @products.to_csv }
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"product-requests.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+    end
   end
   end
 
@@ -39,6 +42,11 @@ class ProductrequestsController < ApplicationController
               ProductrequestMailer.productrequest_email(@productrequest).deliver
               #SENDING EMAIL TO CUSTOMER THAT WE HAVE RECEIVED YOUR EMAIL
               ProductrequestMailer.productrequest_inprogress_email(@productrequest).deliver
+          
+              #BELOW IS CODE FOR SUBSCRIBING USER TO OUR MAILCHIMP LIST USING GIBBON
+              gb = Gibbon::API.new("93f3019f32a6215c04959711c63d894e-us3")
+              gb.lists.subscribe({:id => '8bacae7aa7', :email => {:email => @productrequest.email}, :merge_vars => {:FNAME => 'First Name', :LNAME => 'Last Name'}, :double_optin => false})
+          
           redirect_to new_productrequest_path }
         format.json { render :show, status: :created, location: @productrequest }
       else

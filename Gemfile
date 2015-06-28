@@ -8,6 +8,9 @@ gem 'bootstrap_form'
 
 gem 'pg'
 
+#For Mailchimp
+gem 'gibbon'
+
 gem "wice_grid", '3.4.2'
 gem "jquery-ui-rails"
 gem 'rails_12factor'
