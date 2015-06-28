@@ -42,6 +42,10 @@ Rails.application.routes.draw do
   match 'poorinventory', to: 'orderitems#poorinventory', via: [:get, :post]
   match 'salesforproducedate', to: 'orderitems#salesforproducedate', via: [:get, :post]
   match 'salesforproduce', to: 'orderitems#salesforproduce', via: [:get, :post]
+  
+  match 'set_fullfilled', to: 'productrequests#set_fullfilled', via: [:get, :post]
+  match 'set_notfullfilled', to: 'productrequests#set_notfullfilled', via: [:get, :post]
+
 
 
 

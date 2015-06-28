@@ -2,11 +2,12 @@ class ProductrequestsController < ApplicationController
   layout 'productrequest'
   http_basic_authenticate_with name: "admin", password: "1af2af3af4af5", except: [:new, :create]
   before_action :set_productrequest, only: [:show, :edit, :update, :destroy]
+  helper_method :set_fullfilled
 
   # GET /productrequests
   # GET /productrequests.json
   def index
-    @productrequests = Productrequest.all
+    @productrequests = Productrequest.where("status = ?", "active")
     respond_to do |format|
       format.html
       format.csv do
@@ -43,10 +44,13 @@ class ProductrequestsController < ApplicationController
               ProductrequestMailer.productrequest_email(@productrequest).deliver
               #SENDING EMAIL TO CUSTOMER THAT WE HAVE RECEIVED YOUR EMAIL
               ProductrequestMailer.productrequest_inprogress_email(@productrequest).deliver
-          
+          begin
               #BELOW IS CODE FOR SUBSCRIBING USER TO OUR MAILCHIMP LIST USING GIBBON
               gb = Gibbon::API.new("93f3019f32a6215c04959711c63d894e-us3")
               gb.lists.subscribe({:id => '8bacae7aa7', :email => {:email => @productrequest.email}, :merge_vars => {:FNAME => 'First Name', :LNAME => 'Last Name'}, :double_optin => false})
+          rescue Gibbon::MailChimpError => e
+            # do something with e.message here
+          end
           
           redirect_to new_productrequest_path }
         format.json { render :show, status: :created, location: @productrequest }
@@ -80,6 +84,24 @@ class ProductrequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def set_fullfilled
+      @productrequest = Productrequest.find(params[:pid])
+      @productrequest.status = "fullfilled"
+      if @productrequest.save
+        ProductrequestMailer.productrequest_fullfilled_email(@productrequest).deliver
+        redirect_to productrequests_url, notice: 'Product Request was Fullfilled.' 
+      end
+  end
+  
+  def set_notfullfilled
+      @productrequest = Productrequest.find(params[:pid])
+      @productrequest.status = "notfullfilled"
+      if @productrequest.save
+        ProductrequestMailer.productrequest_notfullfilled_email(@productrequest).deliver
+        redirect_to productrequests_url, notice: 'Product Request was set to NotFullfilled.' 
+      end
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

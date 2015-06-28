@@ -24,8 +24,8 @@
         <td><%= productrequest.phone %></td>
         <td><%= productrequest.location %></td>
         <td><%= productrequest.status %></td>
-        <td><%= link_to 'Fullfilled', productrequest %></td>
-        <td><%= link_to 'NotFullfilled', edit_productrequest_path(productrequest) %></td>
+        <td><%= link_to 'Fullfilled', set_fullfilled_path(pid: productrequest.id) %></td>
+        <td><%= link_to 'NotFullfilled', set_notfullfilled_path(pid: productrequest.id) %></td>
         <td><%= link_to 'Destroy', productrequest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
