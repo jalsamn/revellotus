@@ -31,11 +31,13 @@ class ProductrequestsController < ApplicationController
   # POST /productrequests.json
   def create
     @productrequest = Productrequest.new(productrequest_params)
-    ProductrequestMailer.productrequest_email(@productrequest).deliver
     respond_to do |format|
       if @productrequest.save
         format.html { 
-          flash[:success] = "Your product request has been created"
+          flash[:success] = "Your product request has been created"       
+              #SENDING EMAIL TO ADMIN THAT REQUEST HAS BEEN SUBMITED          
+              ProductrequestMailer.productrequest_email(@productrequest).deliver
+              #SENDING EMAIL TO CUSTOMER THAT WE HAVE RECEIVED YOUR EMAIL
               ProductrequestMailer.productrequest_inprogress_email(@productrequest).deliver
           redirect_to new_productrequest_path }
         format.json { render :show, status: :created, location: @productrequest }

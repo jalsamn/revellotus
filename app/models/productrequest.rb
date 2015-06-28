@@ -1,6 +1,6 @@
 class Productrequest < ActiveRecord::Base
   
-  validates :name, :email, :presence => true
+  validates :name, :email, :location, :presence => true
 
   def self.to_csv(options = {})
   CSV.generate(options) do |csv|
