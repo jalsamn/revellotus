@@ -21,7 +21,7 @@ hash = parser.parse(json)
 
   hash["objects"].each do |oi|
     begin
-    
+              
         orderitem = Orderitem.new
         orderitem.cost = oi["cost"]
         orderitem.created_by = oi["created_by"]
