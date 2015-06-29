@@ -50,5 +50,5 @@ hash = parser.parse(json)
         $objArray.push "Error encountered @ " + oi["product_name_override"]
         puts "Error encountered @ " + oi["product_name_override"]
     end
-  
+    puts "Completed the import process"
   end
