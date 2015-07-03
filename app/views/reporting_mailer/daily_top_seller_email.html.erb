@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body><h1>Daily Top Seller for Produce Order for <%= Date.yesterday.to_time.strftime('%B %e') %> </h1>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+            <tr>
+                <th>Product     </th>
+                <th>Sold Qty   </th>
+            </tr>
+        </thead>
+
+    <tbody>
+
+        <% @items.first(50).each do |item| %>
+       <tr>
+         <td> <%= item.name %> </td>
+         <td>   <%= item.totalsold %> </td>
+       </tr>
+        <% end %>
+
+    </tbody>
+    </table>
+  </body>
+</html>
