@@ -51,18 +51,18 @@ class OrderitemsController < ApplicationController
     end
   end
   
-  def salesforproducedate
+  def salesforproducedatemesa
     if params[:start_date] && params[:end_date]
       end_params = params[:end_date]
       start_params = params[:start_date]
       start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
       end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
     
-      redirect_to :action => 'salesforproduce', :start_date => start_date, :end_date => end_date
+      redirect_to :action => 'salesforproducemesa', :start_date => start_date, :end_date => end_date
     end
   end
  
-  def salesforproduce
+  def salesforproducemesa
     @itemsperday = Groupedtotal
     .select("name, SUM(totalsold) as totalsold, category")
       .where(created_date: params[:start_date]..params[:end_date]) 
@@ -72,6 +72,28 @@ class OrderitemsController < ApplicationController
         
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end
+  
+  def salesforproducedatephx
+    if params[:start_date] && params[:end_date]
+      end_params = params[:end_date]
+      start_params = params[:start_date]
+      start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
+      end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
+    
+      redirect_to :action => 'salesforproducephx', :start_date => start_date, :end_date => end_date
+    end
+  end
+ 
+  def salesforproducephx
+    @itemsperday = Groupedtotal
+    .select("name, SUM(totalsold) as totalsold, category")
+      .where(created_date: params[:start_date]..params[:end_date]) 
+      .where(category: '/products/ProductCategory/539/')
+      .group("name, category")
+      .sort_by(&:totalsold).reverse
+        
+    @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
+  end  
   
 
   # DELETE /orderitems/1

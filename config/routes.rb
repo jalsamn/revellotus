@@ -40,8 +40,14 @@ Rails.application.routes.draw do
   match 'totalsales', to: 'orderitems#totalsales', via: [:get, :post]
   match 'poorinventorydate', to: 'orderitems#poorinventorydate', via: [:get, :post]
   match 'poorinventory', to: 'orderitems#poorinventory', via: [:get, :post]
-  match 'salesforproducedate', to: 'orderitems#salesforproducedate', via: [:get, :post]
-  match 'salesforproduce', to: 'orderitems#salesforproduce', via: [:get, :post]
+  match 'salesforproducedatemesa', to: 'orderitems#salesforproducedatemesa', via: [:get, :post]
+  match 'salesforproducemesa', to: 'orderitems#salesforproducemesa', via: [:get, :post]
+  
+  match 'salesforproducedatephx', to: 'orderitems#salesforproducedatephx', via: [:get, :post]
+  match 'salesforproducephx', to: 'orderitems#salesforproducephx', via: [:get, :post]
+  
+  match 'salesforproducedateall', to: 'orderitems#salesforproducedateall', via: [:get, :post]
+  match 'salesforproduceall', to: 'orderitems#salesforproduceall', via: [:get, :post]
   
   match 'set_fullfilled', to: 'productrequests#set_fullfilled', via: [:get, :post]
   match 'set_notfullfilled', to: 'productrequests#set_notfullfilled', via: [:get, :post]
