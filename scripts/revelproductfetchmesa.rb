@@ -14,7 +14,7 @@ hash = parser.parse(json)
 
   hash["objects"].each do |prod|
   begin
-    if !Product.exists?(:barcode => prod["barcode"])
+    if !Product.exists?(:revid => prod["id"])
       next if prod["establishment"] == "/enterprise/Establishment/2/"
         product = Product.new
         product.name = prod["name"]
@@ -34,7 +34,7 @@ hash = parser.parse(json)
      
         next if prod["establishment"] == "/enterprise/Establishment/2/"
       
-          product = Product.find_by(barcode: prod["barcode"])
+      product = Product.find_by(revid: prod["id"])
           product.name = prod["name"]
           product.sku = prod["sku"]
           product.barcode = prod["barcode"]
