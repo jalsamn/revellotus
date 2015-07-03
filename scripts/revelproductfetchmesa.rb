@@ -6,9 +6,6 @@ if result.nil?
 elsif result
   puts "Grabbed the JSON from Revel!"
 end
-
-
-
   
 json = File.new('RevProducts.json', 'r')
 parser = Yajl::Parser.new
