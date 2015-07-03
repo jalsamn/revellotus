@@ -57,3 +57,4 @@ hash = parser.parse(json)
   end
   end
 
+Product.where('barcode IS NUll').delete_all
