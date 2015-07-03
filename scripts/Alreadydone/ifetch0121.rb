@@ -1,5 +1,5 @@
 
-result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/OrderItem/?format=json&limit=5000000000&updated_date__gte=2015-05-11&updated_date__lt=2015-05-16' -O 'scripts/RevOrderItems.json' --timeout=6000")
+result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/OrderItem/?format=json&limit=5000000000&updated_date__gte=2015-06-11&updated_date__lt=2015-06-16' -O 'scripts/RevOrderItems.json' --timeout=6000")
 if result.nil?
   puts "Error was #{$?}"
 elsif result
