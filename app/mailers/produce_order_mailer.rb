@@ -7,5 +7,11 @@ class ProduceOrderMailer < ActionMailer::Base
          :to      => "jalsamn@gmail.com",
          :from    => "jalsamn@gmail.com"
   end
+  
+  def orderitems_finished()
+      mail :subject => "OrderItem Import script completed: " + Date.today.to_time.strftime('%B %e'),
+         :to      => "jalsamn@gmail.com",
+         :from    => "jalsamn@gmail.com"
+  end
 
 end
