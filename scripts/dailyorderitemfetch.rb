@@ -1,7 +1,7 @@
 time1    = Date.yesterday
 time2 = Time.now
 
-address = "https://lotusmarket.revelup.com/resources/OrderItem/?format=json&limit=50000000000000000000&updated_date__gte=" << time1.year.to_s << "-" << time1.month.to_s << "-" << time1.day.to_s << "&updated_date__lt=" << time2.year.to_s << "-" << time2.month.to_s << "-" << time2.day.to_s
+address = "https://lotusmarket.revelup.com/resources/OrderItem/?format=json&limit=500000000&updated_date__gte=" << time1.year.to_s << "-" << time1.month.to_s << "-" << time1.day.to_s << "&updated_date__lt=" << time2.year.to_s << "-" << time2.month.to_s << "-" << time2.day.to_s
 
 result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' '#{address}' -O 'scripts/RevOrderItems.json' --timeout=6000")
 
