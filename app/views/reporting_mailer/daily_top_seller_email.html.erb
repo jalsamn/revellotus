@@ -3,7 +3,29 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body><h1>Daily Top Seller for <%= Date.yesterday.to_time.strftime('%B %e') %> </h1>
+  <body><h1>Daily Top Items by Revenue for <%= Date.yesterday.to_time.strftime('%B %e') %> </h1>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+            <tr>
+                <th>Product     </th>
+                <th>Revenue   </th>
+            </tr>
+        </thead>
+
+    <tbody>
+
+        <% @revenueitems.first(50).each do |item| %>
+       <tr>
+         <td> <%= item.name %> </td>
+         <td>   <%= item.totalsold %> </td>
+       </tr>
+        <% end %>
+
+    </tbody>
+    </table>
+    
+      <h1>Daily Top Items by Unit Sales for <%= Date.yesterday.to_time.strftime('%B %e') %> </h1>
     
     <table class="table table-bordered table-striped">
       <thead>
@@ -15,7 +37,7 @@
 
     <tbody>
 
-        <% @items.first(50).each do |item| %>
+        <% @salesitems.first(50).each do |item| %>
        <tr>
          <td> <%= item.name %> </td>
          <td>   <%= item.totalsold %> </td>

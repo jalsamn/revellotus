@@ -118,7 +118,7 @@ class OrderitemsController < ApplicationController
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end  
   
-
+#####################################################################################################
   # DELETE /orderitems/1
   # DELETE /orderitems/1.json
   def destroy
