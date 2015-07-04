@@ -109,7 +109,7 @@ class OrderitemsController < ApplicationController
   end
  
   def totalrevenuesalesall
-    @itemsperday = Groupedrevenuetotal
+    @itemsperday = Groupedincometotal
     .select("name, SUM(itemrevenue) as totalsold")
     .where(created_date: params[:start_date]..params[:end_date]) 
     .group("name")
