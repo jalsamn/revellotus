@@ -1,4 +1,4 @@
-class ModifyviewGroupedrevenuetotals < ActiveRecord::Migration
+class ModifyviewGroupedrevenuetotals1 < ActiveRecord::Migration
   def change
      execute %Q{
        CREATE OR REPLACE VIEW groupedrevenuetotals AS
