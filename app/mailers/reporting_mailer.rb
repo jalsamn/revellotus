@@ -6,6 +6,6 @@ class ReportingMailer < ActionMailer::Base
     @items = items
     mail :subject => "Top Seller for both location, Date: " +   Date.yesterday.to_time.strftime('%B %e'),
     :to      => "mclemenson@janakfoods.com, kapilvijh@gmail.com, gpatel@janakfoods.com",
-         :from    => "jalsamn@gmail.com"
+    :from    => "gpatel@lotusaz.com"
   end  
 end

@@ -52,7 +52,8 @@ Rails.application.routes.draw do
   match 'set_fullfilled', to: 'productrequests#set_fullfilled', via: [:get, :post]
   match 'set_notfullfilled', to: 'productrequests#set_notfullfilled', via: [:get, :post]
 
-
+  match 'totalrevenuesalesdateall', to: 'orderitems#totalrevenuesalesdateall', via: [:get, :post]
+  match 'totalrevenuesalesall', to: 'orderitems#totalrevenuesalesall', via: [:get, :post]
 
 
   resources :products

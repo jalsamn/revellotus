@@ -95,6 +95,29 @@ class OrderitemsController < ApplicationController
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end  
   
+  
+############# REVENUE BASED REPORT ######################
+  def totalrevenuesalesdateall
+    if params[:start_date] && params[:end_date]
+      end_params = params[:end_date]
+      start_params = params[:start_date]
+      start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
+      end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
+    
+      redirect_to :action => 'totalrevenuesalesall', :start_date => start_date, :end_date => end_date
+    end
+  end
+ 
+  def totalrevenuesalesall
+    @itemsperday = Groupedrevenuetotal
+    .select("name, SUM(itemrevenue) as totalsold")
+    .where(created_date: params[:start_date]..params[:end_date]) 
+    .group("name")
+    .sort_by(&:totalsold).reverse
+    
+    @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
+  end  
+  
 
   # DELETE /orderitems/1
   # DELETE /orderitems/1.json
