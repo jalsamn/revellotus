@@ -110,8 +110,7 @@ class OrderitemsController < ApplicationController
     @itemsperday = Groupedtotal
     .select("name, SUM(totalsold) as totalsold, category")
       .where(created_date: params[:start_date]..params[:end_date]) 
-      .where(category: '/products/ProductCategory/539/')
-      .where(category: '/products/ProductCategory/120/')
+      .where(:category => ['/products/ProductCategory/539/', '/products/ProductCategory/120/'] )
       .group("name, category")
       .sort_by(&:totalsold).reverse
         
