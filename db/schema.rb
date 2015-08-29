@@ -125,12 +125,6 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.datetime "updated_at"
   end
 
-  create_table "templablesphxes", force: true do |t|
-    t.integer  "barcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
