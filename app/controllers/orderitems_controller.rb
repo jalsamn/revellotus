@@ -108,11 +108,11 @@ class OrderitemsController < ApplicationController
  
   def salesforproduceall
     @itemsperday = Groupedtotal
-    .select("name, SUM(totalsold) as totalsold, category")
+    .select("name, SUM(totalsold) as totalsold")
       .where(created_date: params[:start_date]..params[:end_date]) 
       .where(:category => ['/products/ProductCategory/539/', '/products/ProductCategory/120/'] )
       .group("name, category")
-      .sort_by(&:totalsold).reverse
+    .sort_by(&:name)
         
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end  
