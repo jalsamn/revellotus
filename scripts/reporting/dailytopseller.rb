@@ -4,6 +4,7 @@ time2 = Time.now
 @itemsrevenueperday = Groupedincometotal
     .select("name, SUM(itemrevenue) as totalsold")
 .where(created_date: time1..time2) 
+.where(:category => ['/products/ProductCategory/539/', '/products/ProductCategory/120/'] )
     .group("name")
     .sort_by(&:totalsold).reverse
 
