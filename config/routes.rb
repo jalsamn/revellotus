@@ -55,7 +55,10 @@ Rails.application.routes.draw do
   match 'totalrevenuesalesdateall', to: 'orderitems#totalrevenuesalesdateall', via: [:get, :post]
   match 'totalrevenuesalesall', to: 'orderitems#totalrevenuesalesall', via: [:get, :post]
 
-
+  match 'revenueforproducedateall', to: 'orderitems#revenueforproducedateall', via: [:get, :post]
+  match 'revenueforproduceall', to: 'orderitems#revenueforproduceall', via: [:get, :post]
+  
+  
   resources :products
   
   root to: 'templabels#index'

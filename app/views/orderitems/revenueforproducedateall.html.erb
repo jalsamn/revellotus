@@ -1,0 +1,6 @@
+<%= form_tag(revenueforproducedateall_path) do %>
+<h1> Revenue of Produce for All Location </h1>
+<%= select_date Date.today, :prefix => :start_date %>
+<%= select_date Date.today, :prefix => :end_date %>>
+<%= submit_tag "Submit", :disable_with => "Submitting..." %>
+<% end %>

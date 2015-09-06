@@ -138,6 +138,28 @@ class OrderitemsController < ApplicationController
     .sort_by(&:totalsold).reverse
     
     @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
+  end
+  
+  def revenueforproducedateall
+    if params[:start_date] && params[:end_date]
+      end_params = params[:end_date]
+      start_params = params[:start_date]
+      start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
+      end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
+    
+      redirect_to :action => 'revenueforproduceall', :start_date => start_date, :end_date => end_date
+    end
+  end
+ 
+  def revenueforproduceall
+    @itemsperday = Groupedincometotal
+    .select("name, SUM(itemrevenue) as totalsold")
+      .where(created_date: params[:start_date]..params[:end_date]) 
+      .where(:category => ['/products/ProductCategory/539/', '/products/ProductCategory/120/'] )
+      .group("name, category")
+    .sort_by(&:name)
+        
+   # @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
   end  
   
 #####################################################################################################
