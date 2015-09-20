@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 201502130340531) do
     t.integer  "revid",       limit: 8
     t.integer  "productid"
     t.string   "location"
+    t.decimal  "case_size"
+    t.string   "case_unit"
   end
 
   create_table "rev_inventories", force: true do |t|

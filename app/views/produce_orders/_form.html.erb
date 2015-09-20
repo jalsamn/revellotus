@@ -49,13 +49,11 @@
                 .select("name, SUM(totalsold) as totalsold, productid")
                 .where(created_date: @date1..@date2)
                 .where(productid: @allproduce.fetch(index).revid)
-                .where(category: '/products/ProductCategory/120/')
-                .group("name, productid")
-                .sort_by(&:totalsold).reverse %>
+                .group("name, productid") %>
           
           <td> 
             <% begin %>
-            <%= @psale.first.totalsold %> 
+            <%= @psale.totalsold %> 
             <% rescue 
                 next
                end %> </td>

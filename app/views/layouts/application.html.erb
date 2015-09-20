@@ -29,7 +29,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/templabels">Print Tags <span class="current"></span> </a></li>
-        <li class="active"><a href="/produce_orders/new">Produce Order</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Produce Order<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/produce_orders/new">Mesa</a></li>
+            <li><a href="/produce_orders/new">Phoenix</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sales insight <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -44,6 +50,12 @@
             
 
             <li class="divider"></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Maintainance<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/producemaintainance">Produce</a></li>
           </ul>
         </li>
       </ul>

@@ -16,6 +16,13 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label "Case Size" %><br>
+    <%= f.text_field :case_size %>
+  </div>
+  <div class="field">
+    <%= f.select :case_unit, options_for_select([["LB", "LB"], ["Pieces", "Pieces"]], @product.case_size) %>
+  </div>
+  <div class="field">
     <%= f.label :sku %><br>
     <%= f.number_field :sku %>
   </div>
