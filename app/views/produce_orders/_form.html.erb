@@ -53,7 +53,7 @@
           
           <td> 
             <% begin %>
-            <%= @psale.totalsold %> 
+            <%= @psale.first.totalsold %> 
             <% rescue 
                 next
                end %> </td>
