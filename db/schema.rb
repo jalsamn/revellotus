@@ -43,6 +43,25 @@ ActiveRecord::Schema.define(version: 201502130340531) do
 
   add_index "orderitems", ["rev_id"], name: "index_orderitems_on_rev_id", unique: true, using: :btree
 
+  create_table "phx_produce_order_items", force: true do |t|
+    t.string   "producename"
+    t.decimal  "quantity"
+    t.integer  "PhxProduceOrderId_id"
+    t.string   "instock"
+    t.string   "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phx_produce_order_items", ["PhxProduceOrderId_id"], name: "index_phx_produce_order_items_on_PhxProduceOrderId_id", using: :btree
+
+  create_table "phx_produce_orders", force: true do |t|
+    t.string   "vendor"
+    t.date     "orderdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "phxtemplabels", force: true do |t|
     t.string   "barcode"
     t.datetime "created_at"

@@ -30,7 +30,7 @@
               <th>Order Qty</th>
               <th>Instock Qty</th>
               <th>Remark</th>
-              <th>Mon-Sun Sales</th>
+              <th>Weekly Avg.</th>
           </tr>
       </thead>
 
@@ -53,7 +53,7 @@
           
           <td> 
             <% begin %>
-            <%= @psale.first.totalsold %> 
+            <%= @psale.first.totalsold.round(2) %> 
             <% rescue 
                 next
                end %> </td>

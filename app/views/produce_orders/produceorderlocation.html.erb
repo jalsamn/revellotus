@@ -1,0 +1,7 @@
+
+<%= form_tag(produceorderlocation_path) do %>
+<%= select_tag("location", options_for_select([['Mesa', '/products/ProductCategory/120/'],
+  ['Phoenix', '/products/ProductCategory/539/']])) %>
+
+<%= submit_tag "Submit", :disable_with => "Submitting..." %>
+<% end %>

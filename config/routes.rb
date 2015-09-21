@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   match 'revenueforproduceall', to: 'orderitems#revenueforproduceall', via: [:get, :post]
   
   match 'producemaintainance', to: 'products#produce', via: [:get, :post]
+  match 'produceorderlocation', to: 'produce_orders#produceorderlocation', via: [:get, :post]
   
   
   resources :products

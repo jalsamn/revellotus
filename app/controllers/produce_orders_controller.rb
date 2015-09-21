@@ -11,12 +11,20 @@ class ProduceOrdersController < ApplicationController
   # GET /produce_orders/1.json
   def show
   end
+  
+  def produceorderlocation
+    if params[:location]
+    location = params[:location]
+    redirect_to :action => 'new', :location => location
+    end
+  end
 
   # GET /produce_orders/new
   def new
+    
     @produce_order = ProduceOrder.new
-    @producenum = Product.where(category: '/products/ProductCategory/120/').count
-    @allproduce = Product.where(category: '/products/ProductCategory/120/')
+    @producenum = Product.where(category: params[:location]).count
+    @allproduce = Product.where(category: params[:location])
     
     
     @producenum.times {@produce_order.produce_order_items.build}
