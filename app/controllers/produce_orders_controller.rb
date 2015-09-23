@@ -22,6 +22,12 @@ class ProduceOrdersController < ApplicationController
   # GET /produce_orders/new
   def new
     
+    if ( params[:location] == "/products/ProductCategory/120/")
+      @store = "Mesa"
+    else
+      @store = "Phoenix"
+    end
+    
     @produce_order = ProduceOrder.new
     @producenum = Product.where(category: params[:location]).count
     @allproduce = Product.where(category: params[:location])
