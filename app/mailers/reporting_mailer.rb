@@ -10,7 +10,7 @@ class ReportingMailer < ActionMailer::Base
     :from    => "gpatel@lotusaz.com"
   end  
   
-  def custom_produce_sales_email(start_date, end_date, location)
+  def mesa_produce_sales_email(start_date, end_date, location)
     @itemsperday = Groupedtotal
     .select("name, SUM(totalsold) as totalsold, category")
     .where(created_date: start_date..end_date) 
