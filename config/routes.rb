@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'csv', to: 'templabels#spitcsv'
   get 'csvphx', to: 'phxtemplabels#spitcsv'
   get 'phxlabelmessage', to: 'phxtemplabels#labelmessage'
+  get 'phxsendtoprintserver', to: 'phxtemplabels#phxsendtoprintserver'
+  
   get 'labelmessage', to: 'templabels#labelmessage'
   #get 'totalsales', to: 'orderitems#totalsales'
   match 'totalsales', to: 'orderitems#totalsales', via: [:get, :post]

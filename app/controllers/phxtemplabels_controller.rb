@@ -79,7 +79,7 @@ class PhxtemplabelsController < ApplicationController
       ftp.passive = true
      
       header = "barcode,name,price,point"
-      file = "barcodelabelsphx.csv"
+      file = "phxbarcodelabels.csv"
              CSV.open(file, "w") do |csv|
              csv << ["Barcode", "Name", "Price", "Points"]
                
@@ -87,10 +87,9 @@ class PhxtemplabelsController < ApplicationController
                
               @templabels.each do |c|
                   if !Product.exists?(:barcode => c["barcode"])  
-                     
                     
                   else
-                    product = Product.find_by barcode: c["barcode"]
+                    product = Product.find_by_barcode_and_location(c["barcode"], "/enterprise/Establishment/3/")
                     csv << [product.barcode, product.name, product.price.to_s, product.rewardpoint.to_s] 
                     
                   end
@@ -101,9 +100,46 @@ class PhxtemplabelsController < ApplicationController
      ftp.putbinaryfile(file, remotefile = File.basename(file))
      Phxtemplabel.delete_all()
      ftp.close
-     redirect_to phxlabelmessage_path, :notice => ""
+     redirect_to labelmessage_path, :notice => ""
+   end
+    
+  def phxsendtoprintserver
+    
+    @templabels = Phxtemplabel.all
+  
+   require 'csv'
+   require 'json'
+     
+      header = "barcode,name,price,point"
+      file = "barcodelabelsphx.csv"
+             CSV.open(file, "w") do |csv|
+             csv << ["Barcode", "Name", "Price", "Points"]
+               
+               
+               
+              @templabels.each do |c|
+                  if !Product.exists?(:barcode => c["barcode"])                   
+                    
+                  else
+                    product = Product.find_by_barcode_and_location(c["barcode"], "/enterprise/Establishment/3/")
+                    csv << [product.barcode, product.name, product.price.to_s, product.rewardpoint.to_s] 
+                  end
+             end
+           end
+     
+     Phxtemplabel.delete_all()
+      CSV.parse(file).to_json
+    
+      result = system("wget 'https://lotus-price-tag-print-server-jalsamn.c9.io/api/labels'")
+  if result.nil?
+    puts "Error was #{$?}"
+  elsif result
+    puts result
   end
     
+     redirect_to phxlabelmessage_path, :notice => ""
+  end
+  
   def labelmessage
   end
   

@@ -54,6 +54,11 @@ gem 'yajl-ruby', require: 'yajl'
 gem 'rails-api'
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'delayed_job_active_record'
+gem 'resque'
+gem "daemons"
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
