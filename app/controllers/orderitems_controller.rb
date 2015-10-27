@@ -64,7 +64,7 @@ class OrderitemsController < ApplicationController
  
   def salesforproducemesa
        
-    ReportingMailer.delay.mesa_produce_sales_email(params[:start_date], params[:end_date])
+    ReportingMailer.delay.custom_produce_sales_email(params[:start_date], params[:end_date], '/products/ProductCategory/120/')
         
   end
   
@@ -81,14 +81,7 @@ class OrderitemsController < ApplicationController
   end
  
   def salesforproducephx
-    @itemsperday = Groupedtotal
-    .select("name, SUM(totalsold) as totalsold, category")
-      .where(created_date: params[:start_date]..params[:end_date]) 
-      .where(category: '/products/ProductCategory/539/')
-      .group("name, category")
-      .sort_by(&:totalsold).reverse
-        
-    @paginatable_array = Kaminari.paginate_array(@itemsperday).page(params[:page]).per(20)
+        ReportingMailer.delay.custom_produce_sales_email(params[:start_date], params[:end_date], '/products/ProductCategory/539/')
   end  
   
     def salesforproducedateall
