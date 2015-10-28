@@ -3,6 +3,6 @@
 <%= select_date Date.today, :prefix => :start_date %>
 <%= select_date Date.today, :prefix => :end_date %>
 <h4> Email 
-  <%= email_field_tag, :prefix => :email %></h4>
+  <%= email_field_tag :email %></h4>
 <%= submit_tag "Submit", :disable_with => "Submitting..." %>
 <% end %>
