@@ -51,19 +51,19 @@ class OrderitemsController < ApplicationController
     end
   end
   
-  def salesforproducedatemesa
+  def salesforproducedatebreakdown
     if params[:start_date] && params[:end_date]
       end_params = params[:end_date]
       start_params = params[:start_date]
       start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
       end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
     
-      redirect_to :action => 'salesforproducemesa', :start_date => start_date, :end_date => end_date, :email => params[:email]
+      redirect_to :action => 'salesforproducebreakdown', :start_date => start_date, :end_date => end_date, :email => params[:email]
     end
   end
  
-  def salesforproducemesa    
-    ReportingMailer.delay.custom_produce_sales_email(params[:start_date], params[:end_date], '/products/ProductCategory/120/', params[:email])      
+  def salesforproducebreakdown  
+    ReportingMailer.delay.custom_produce_sales_email(params[:start_date], params[:end_date], params[:email])      
   end
   
   
