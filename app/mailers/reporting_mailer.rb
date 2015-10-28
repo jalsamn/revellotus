@@ -10,7 +10,7 @@ class ReportingMailer < ActionMailer::Base
     :from    => "gpatel@lotusaz.com"
   end  
   
-  def custom_produce_sales_email(start_date, end_date, category)
+  def custom_produce_sales_email(start_date, end_date, category, email)
     @itemsperday = Groupedtotal
     .select("name, SUM(totalsold) as totalsold, category")
     .where(created_date: start_date..end_date) 
@@ -18,7 +18,7 @@ class ReportingMailer < ActionMailer::Base
       .group("name, category")
       .sort_by(&:totalsold).reverse
     mail :subject => "Produce Sales for Mesa, Date: " +   start_date.to_time.strftime('%B %e') + " to " + end_date.to_time.strftime('%B %e'),
-    :to      => "gpatel@janakfoods.com",
+    :to      => email,
     :from    => "gpatel@lotusaz.com"
   end  
   
