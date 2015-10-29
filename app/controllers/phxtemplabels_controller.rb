@@ -79,7 +79,7 @@ class PhxtemplabelsController < ApplicationController
       ftp.passive = true
      
       header = "barcode,name,price,point"
-      file = "phxbarcodelabels.csv"
+      file = "barcodelabelsphx.csv"
              CSV.open(file, "w") do |csv|
              csv << ["Barcode", "Name", "Price", "Points"]
                
