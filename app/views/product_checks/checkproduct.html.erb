@@ -1,0 +1,26 @@
+<h1> Enter Barcode to get started</h1>
+<h4> Please note if product was added in last one hour it will not reflect here.</h4>
+
+<%= form_tag(checkproduct_path, :method=>'get') do %>
+ <p>
+   Barcode:<br />
+   <%= text_field_tag "barcode" %>
+ </p>
+ <p>
+   <%= submit_tag 'Submit' %>
+ </p>
+<% end %>
+
+<h3>Barcode: <%= params[:barcode] %> </h3>
+<h3> Mesa: <% if @productmesa.nil? %>
+         <font color="red">       <%= "Not in System" %> </font>
+                <% else %> 
+         <font color="green">       <%= "In System" %> </font>
+          <%  end %>
+</h3>
+<h3> Phoenix: <% if @productphx.nil? %>
+         <font color="red">       <%= "Not in System" %> </font>
+                <% else %> 
+              <font color="green">  <%= "In System" %> </font>
+          <%  end %>
+</h3>
