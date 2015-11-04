@@ -29,17 +29,22 @@ class TemplabelsController < ApplicationController
   # POST /templabels
   # POST /templabels.json
   def create
+    
     @templabel = Templabel.new(templabel_params)
-
-    respond_to do |format|
-      if @templabel.save
-        format.html { redirect_to templabels_path, notice: 'Templabel was successfully created.' }
-        format.json { render :show, status: :created, location: @templabel }
-      else
-        format.html { render :new }
-        format.json { render json: @templabel.errors, status: :unprocessable_entity }
-      end
-    end
+    if Product.where(barcode: @templabel.barcode).present?
+               respond_to do |format|
+                if @templabel.save
+                  format.html { redirect_to templabels_path, notice: 'Templabel was successfully created.' }
+                  format.json { render :show, status: :created, location: @templabel }
+                else
+                  format.html { render :new }
+                  format.json { render json: @templabel.errors, status: :unprocessable_entity }
+                end
+              end
+    else
+              flash[:error] = 'This product is not in system.'
+              redirect_to templabels_path
+  end
   end
 
   # PATCH/PUT /templabels/1

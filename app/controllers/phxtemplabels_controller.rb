@@ -27,18 +27,23 @@ class PhxtemplabelsController < ApplicationController
 
   # POST /phxtemplabels
   # POST /phxtemplabels.json
-  def create
+   def create
+    
     @templabel = Phxtemplabel.new(phxtemplabel_params)
-
-    respond_to do |format|
-      if @templabel.save
-        format.html { redirect_to phxtemplabels_path, notice: 'Label was successfully created.' }
-        format.json { render :show, status: :created, location: @templabel }
-      else
-        format.html { render :new }
-        format.json { render json: @templabel.errors, status: :unprocessable_entity }
-      end
-    end
+    if Product.where(barcode: @templabel.barcode).present?
+               respond_to do |format|
+                if @templabel.save
+                  format.html { redirect_to phxtemplabels_path, notice: 'Templabel was successfully created.' }
+                  format.json { render :show, status: :created, location: @templabel }
+                else
+                  format.html { render :new }
+                  format.json { render json: @templabel.errors, status: :unprocessable_entity }
+                end
+              end
+    else
+              flash[:error] = 'This product is not in system.'
+              redirect_to phxtemplabels_path
+  end
   end
 
   # PATCH/PUT /phxtemplabels/1
