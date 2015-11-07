@@ -91,10 +91,10 @@ class PhxtemplabelsController < ApplicationController
                
                
               @templabels.each do |c|
-                  if !Product.exists?(:barcode => c["barcode"])  
+                product = Product.find_by_barcode_and_location(c["barcode"], "/enterprise/Establishment/3/")
+                  if product.nil?  
                     
                   else
-                    product = Product.find_by_barcode_and_location(c["barcode"], "/enterprise/Establishment/3/")
                     csv << [product.barcode, product.name, product.price.to_s, product.rewardpoint.to_s] 
                     
                   end
