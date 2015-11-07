@@ -30,7 +30,8 @@ class PhxtemplabelsController < ApplicationController
    def create
     
     @templabel = Phxtemplabel.new(phxtemplabel_params)
-    if Product.where(barcode: @templabel.barcode).present?
+    product = Product.find_by_barcode_and_location(@templabel.barcode, "/enterprise/Establishment/3/")
+    if product.present?
                respond_to do |format|
                 if @templabel.save
                   format.html { redirect_to phxtemplabels_path, notice: 'Templabel was successfully created.' }
