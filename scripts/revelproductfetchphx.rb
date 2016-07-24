@@ -1,6 +1,6 @@
 require 'net/ftp'
 
-result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/Product/?format=json&establishment=3&limit=5000000000' -O 'RevProductsPhx.json'")
+result = system("wget --header 'API-AUTHENTICATION: 288c79b9556747d6a66da933720b484a:aecdb2f39e8a4499980dd98a2f083856c547129de799420fa80ed302f51608cd' 'https://lotusmarket.revelup.com/resources/Product/?format=json&establishment=3&updated_date__gte=2016-07-01T03:00:00&limit=500000' -O 'RevProductsPhx.json'")
 if result.nil?
   puts "Error was #{$?}"
 elsif result
