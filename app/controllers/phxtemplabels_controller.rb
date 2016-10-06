@@ -44,7 +44,8 @@ class PhxtemplabelsController < ApplicationController
     else
               flash[:error] = 'This product is not in system.'
               redirect_to phxtemplabels_path
-  end
+    end
+    end
   
 
   # PATCH/PUT /phxtemplabels/1
@@ -125,6 +126,4 @@ class PhxtemplabelsController < ApplicationController
     def phxtemplabel_params
       params.require(:phxtemplabel).permit(:barcode)
     end
-  
-  
 end
