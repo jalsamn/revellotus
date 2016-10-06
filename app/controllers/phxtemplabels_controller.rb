@@ -45,7 +45,7 @@ class PhxtemplabelsController < ApplicationController
               flash[:error] = 'This product is not in system.'
               redirect_to phxtemplabels_path
   end
-  end
+  
 
   # PATCH/PUT /phxtemplabels/1
   # PATCH/PUT /phxtemplabels/1.json

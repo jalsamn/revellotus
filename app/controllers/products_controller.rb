@@ -15,6 +15,31 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
   end
+  
+  
+  def search_product_mesa
+    @product = Product.find_by_barcode_and_location(params[:barcode], "/enterprise/Establishment/1/")
+    respond_to do |format|
+      if @product
+        format.json { render json: @product }
+      else
+        format.json { render json: "Product not found", status: 400 }
+      end
+    end
+  end
+  
+  def search_product_phx
+    @product = Product.find_by_barcode_and_location(params[:barcode], "/enterprise/Establishment/3/")
+    respond_to do |format|
+      if @product
+        format.json { render json: @product }
+      else
+        format.json { render json: "Product not found", status: 400 }
+      end
+    end
+  end
+  
+  
 
   # GET /products/new
   def new

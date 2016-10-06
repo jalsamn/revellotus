@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   resources :orderitems
     resources :phxtemplabels 
   resources :templabels 
+  get 'search_product_mesa', to: 'products#search_product_mesa'
+  get 'search_product_phx', to: 'products#search_product_phx'
   get 'csv', to: 'templabels#spitcsv'
   get 'csvphx', to: 'phxtemplabels#spitcsv'
   get 'phxlabelmessage', to: 'phxtemplabels#labelmessage'
